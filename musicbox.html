@@ -1,0 +1,88 @@
+
+
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+    
+    touchmove:
+    http://popdevelop.com/2010/08/touching-the-web/
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link type="text/css" rel="stylesheet" href="./css/font-awesome.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <!--
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  -->
+    <script src="./js/TweenMax.min.js"></script>
+    <script src="./js/plugins/CSSPlugin.min.js"></script>
+    <script src="./js/easing/EasePack.min.js"></script>
+    <script src="./js/lowLag.js"></script>
+    <script type="text/javascript" src="./js/soundmanager2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
+    <!--<script src="./js/buzz.js"></script>-->
+    <title>MusicBox</title>
+</head>
+<body>
+    <div class="your-version">
+    <!--<script type="text/javascript" src="./js/quo.js"></script>-->
+    <script src="./js/yourVersion.js" type="text/javascript"></script>
+
+    <div id="bars">
+        <div id="barsv"></div>
+        <div id="barsh"></div>
+    </div>
+
+    <div id="playhead" class="transparent"></div>
+    <div class="controls">
+        <div class="button disabled" id="speel">PLAY <i class="fa fa-play"></i></div>
+        <div class="button disabled" id="mclear">CLEAR</div>
+        <p>
+        <form target="soundwindow" method="post" action="http://musicbox.grit.it/leaf.php" id="soundform" name="soundform"> PLAY SPEED: <select id="songspeed" class="select-style">
+            <option value="24" >Slooow</option>
+            <option value="16" >Slow</option>
+            <option value="12" SELECTED>Normal</option>
+            <option value="8" >Fast</option>
+            <option value="6" >Faster</option>
+            <option value="4" >Fastest</option>
+        </select>
+            <select class="select-style" id="demosongs" onchange="onDemoChange()">
+                <option value="2" >O du lieber Augustin</option>
+                <option value="3" >Wilhelmus van Nassouwe</option>
+                <option value="4" >The Can-Can</option>
+                <option value="5" >Wiegenlied brahms</option>
+                <option value="6" >Tetris</option>
+                <option value="7" >Happy birthday</option>
+                <option value="8" >Stille nacht</option>
+                <option value="9" >Flappie</option>
+                <option value="10" >Marines' Hymn</option>
+            </select>
+        </form>
+        </p>
+    </div>
+    <div id="cord">[trace out]</div>
+    </div>
+</body>
+</html>
