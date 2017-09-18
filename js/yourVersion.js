@@ -30,6 +30,7 @@ var sounds=new Array();
 var dragplay=0;
 var removing=false;
 var iv,track,ttime;
+var noterecord = new Array();
 
 
 
@@ -159,7 +160,7 @@ $(document).ready(function () {
     $('.controls').css('top',50+(i*16)+'px');
     loadSong(1);
     $('#playhead').css('height',i*16+'px');
-    console.log("js ready");
+    //console.log("js ready");
 
     //$('.bar').ontouchstart(tch);
 
@@ -272,7 +273,7 @@ function speeldoos(){
             $('#speel').html("STOP <i class=\"fa fa-stop\"></i>");
             TweenLite.to('#playhead',.3,{x:0,opacity:.4,height:"240px"});
             TweenLite.to('#playhead',$('#songspeed').val(),{x:endPosition,onUpdate:playTime,ease:'linear',onComplete:playDone})
-            console.log(endPosition);
+            //console.log(endPosition);
             //$('#playhead').css({'display':'block','left':'0px'});
             //var track=setInterval(function(){playit()},800);
         }
@@ -292,7 +293,11 @@ function playTime(){
             if(head.left>p.left){
                 //sounds[Math.round(Math.min((notes.length-1)*16,p.top)/16)].stop();
                 $(this).addClass('nplayed');
-                lowLag.play('bx_'+Math.round(Math.min((notes.length-1)*16,p.top)/16));
+                //$(this).css('background-color','#ffcc66');
+                var note_num = Math.round(Math.min((notes.length-1)*16,p.top)/16);
+                lowLag.play('bx_'+note_num);
+                console.log("X: "+p.left+ "   Y: "+ note_num);
+                noterecord.push("X: "+p.left+ "   Y: "+ note_num);
                 //sounds[Math.round(Math.min((notes.length-1)*32,p.top)/32)].play();
             }
         }
@@ -306,6 +311,7 @@ function playDone(){
     $('#speel').html("PLAY <i class=\"fa fa-play\"></i>");
 
     TweenLite.to('#playhead',.5,{x:0,opacity:0});
+    console.log(noterecord);
 
 }
 function pnot(){
@@ -315,7 +321,7 @@ function pnot(){
         lowLag.play('bx_'+Math.round(Math.min((notes.length-1)*16,coords[1])/16));
         //sounds[Math.round(Math.min((notes.length-1)*32,p.top)/32)].play(p.left/10);
 
-        console.log( index + ": " + $(this).attr('id')+":"+p.left+":"+p.top );
+        //console.log( index + ": " + $(this).attr('id')+":"+p.left+":"+p.top );
 
     });
 }
@@ -326,7 +332,8 @@ function checkGone(mc){
         $(mc).css('background-color',"red");
         //$(mc).html("x");
     }else{
-        $(mc).css('background-color',"#ff6600");
+        //$(mc).css('background-color',"#ff6600");
+        $(mc).addClass("nmoved");
         //$(mc).html(rnotes[notes[ypos/32]%12]);
     }
 }
@@ -334,7 +341,7 @@ function checkGone(mc){
 function createNote(e){
     blockOffsetX = parseInt($("body .your-version").css('margin-left'));
     blockOffsetY = parseInt($("body .your-version").css('margin-top'));
-    console.log(blockOffsetX);
+    //console.log(blockOffsetX);
     coords[0]=e.pageX-8-blockOffsetX;
     coords[1]=e.pageY-8-blockOffsetY;
     var mid=notelist.length;
