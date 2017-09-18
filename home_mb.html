@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Music Box - Home</title>
+<link rel="stylesheet" href="css/home_mb.css">
+<script src="js/jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+<div class="body">
+
+	<div class="nav">
+	<ul>
+		<li class="li1"><a href="#">About Us</a></li>
+		<li><a href="musicbox.html">Music Box</a></li>
+		<li><a href="#musicbox">Gallery</a></li>
+		<li><a href="#">Home</a></li>
+	</ul>
+	</div>
+
+<div class="mb">
+	<a name="musicbox"></a>
+      <div class="container clearfix mb2">
+        <div class="slide" id="slide">
+            <ul>
+                <li> <a href="#musicbox"><img src="img/mb1.jpg" alt="" title=""/></a> </li>
+                <li> <a href="#musicbox"><img src="img/mb2.jpg" alt="" title=""/></a> </li>
+                <li> <a href="#musicbox"><img src="img/mb3.jpg" alt=""  title=""/></a> </li>
+                <li> <a href="#musicbox"><img src="img/mb4.jpg" alt=""  title=""/></a> </li>
+                <li> <a href="#musicbox"><img src="img/mb5.jpg" alt="" title="" /></a> </li>
+                <li> <a href="#musicbox"><img src="img/mb6.jpg" alt="" title="" /></a> </li>
+            </ul>
+            <div class="arrow">
+                <div class="prev"><</div>
+                <div class="next">></div>
+            </div>
+        </div>
+</div>
+
+<script>
+    $(function () {
+        /*图片位置数据*/
+        var datas = [
+            {'z-index': 6, opacity: 1, width: 290, height: 400, top: 40, left: 0},
+            {'z-index': 4, opacity: 0.6, width: 200, height: 276, top:20, left: -170},
+            {'z-index': 3, opacity: 0.4, width: 150, height: 207, top: 0, left: -80},
+            {'z-index': 2, opacity: 0.2, width: 150, height: 207, top: -20, left: 50},
+            {'z-index': 3, opacity: 0.4, width: 150, height: 207,  top: 0, left: 150},
+            {'z-index': 4, opacity: 0.6, width: 200, height: 276, top:20, left: 250},
+        ]
+        move();
+
+        function move() {
+            /*图片分布*/
+            for (var i = 0; i < datas.length; i++) {
+                var data = datas[i];
+                $('#slide ul li').eq(i).css('z-index',data['z-index']);
+                $('#slide ul li').eq(i).stop().animate(data, 1200);
+            }
+        }
+
+        /*左箭头事件*/
+        $('.prev').on('click', function () {
+            var last = datas.pop();
+            datas.unshift(last);
+
+            move();
+        })
+
+        /*右箭头事件处理函数*/
+        function nextYewu(){
+            var first = datas.shift();
+            datas.push(first);
+            move();
+        }
+        /*右箭头事件*/
+        $('.next').on('click', nextYewu);
+
+        /*自动播放*/
+        var timer = setInterval(function(){
+            nextYewu();
+        },5000);
+        /*鼠标进入slide显示箭头,清除自动播放*/
+        $('#slide').on({
+            mouseenter: function () {
+                $('.arrow').css('display', 'block');
+                clearInterval(timer);
+            }, mouseleave: function () {
+                $('.arrow').css('display', 'none');
+                /*鼠标离开时自动播放*/
+                clearInterval(timer);
+                timer = setInterval(function(){
+                    nextYewu();
+                },5000)
+            }
+        })
+    })
+</script>
+</div>
+</div>
+</div>
+
+</body>
+</html>
