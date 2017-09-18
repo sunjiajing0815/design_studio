@@ -1,1 +1,0 @@
-store all pctures needed.
