@@ -92,15 +92,7 @@
 
 .Cover{
 	float:left;
-	width:30%
-}
-.T{
-	float:left;
-	margin-left:10px;
-}
-.share{
-	margin-top:20px;
-	margin-left:40px;
+	width:40%
 }
 .Infro{
 	background-color:rgb(056,049,38);
@@ -112,11 +104,21 @@
 	font-size:25px;
 	color:rgb(166,143,094);	
 }
+.T{
+	float:left;
+	margin-left:10px;
+}
+.share{
+	margin-top:20px;
+	margin-left:40px;
+}
+.first{
+	width:100%;
+}
 .back{
 	margin-top:50px;
 	margin-left:20px;
 	float:left;
-	
 }
 .play{
 	float:left;
