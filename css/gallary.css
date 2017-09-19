@@ -1,0 +1,156 @@
+/* gallary*/
+
+.gallary{	
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	min-width: 100%;
+	min-height: 100%;
+	background-color:rgb(045,040,034);
+}
+
+.nav{
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:40px;
+	width:80%;
+	overflow:hidden;
+	
+}
+.nav a{
+	text-decoration:none;
+	font-family:"Kozuka Gothic Pro M";
+	font-size:18px;
+}
+.nav a:hover{ color:#FFFFFF; text-decoration:underline;}
+
+.nav ul li{
+	float:left;
+	width:180px;
+	margin-left:100px;
+	list-style:none;
+	position: relative;	
+	margin-left:30px;
+	overflow:hidden;
+	text-align:center;
+}
+.Top{
+	margin-top:-40px;
+	float:left;
+	overflow:hidden;
+}
+.nav ul li a{
+	text-align:center;
+	color: white;
+	font-size:20px;
+	display: block; 
+	overflow:hidden;
+}	
+.MusicBox{
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	color: white;
+	font-size:20px;
+}
+.MusicBoxList{
+
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:40px;
+	height:95%;
+	overflow:hidden;
+}
+
+.MusicBoxList ul li{
+
+	float:left;
+	list-style:none;
+	width:20%;
+	overflow:hidden;
+	margin-left:30px;
+	margin-bottom:40px;
+	text-align:center;
+}
+
+.NoneA{
+	height:1000px;
+}
+ 
+/* detailed*/
+
+
+.Ditail{
+	margin-left:auto;
+	margin-right:auto;
+	width:70%;
+	margin-top:40px;
+	height:95%;
+	overflow:hidden;
+}
+
+.Cover{
+	float:left;
+	width:30%
+}
+.T{
+	float:left;
+	margin-left:10px;
+}
+.share{
+	margin-top:20px;
+	margin-left:40px;
+}
+.Infro{
+	background-color:rgb(056,049,38);
+	font-family:Axure Handwriting ;
+	float:right;
+	width:60%;
+	height:380px;
+	margin-top:80px;
+	font-size:25px;
+	color:rgb(166,143,094);	
+}
+.back{
+	margin-top:50px;
+	margin-left:20px;
+	float:left;
+	
+}
+.play{
+	float:left;
+	margin-left:500px;
+	margin-top:-50px;
+}
+.Infro ul li{
+	float:left;
+	list-style:none;
+	width:170px;
+	color:rgb(215,206,182);
+	background:rgb(120,105,075);
+	text-decoration:none;
+	font-size:20px;
+	margin-left:10px;
+	overflow:hidden;	
+}
+
+.word{
+	margin-top:20px;
+	float:left;
+	margin-left:10px;
+	font-size:15px;
+	color:rgb(175,169,152);
+}
+
+/* AboutUs*/
+
+.AboutUs{	
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	min-width: 100%;
+	min-height: 100%;
+	background-color:rgb(045,040,034);
+	background-size:cover;
+}
