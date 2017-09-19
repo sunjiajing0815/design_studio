@@ -255,7 +255,13 @@ border: none;
 border-bottom: 1px solid #ccc;
 height: 16px;
 width: 100%;
+	font-family: 'Oleo Script', cursive;
+	font-size: 11px;
+	padding-left: 2px;
+
 }
+
+
 #barsv, #barsh{
 	position: absolute;
 	left: 0;
@@ -265,12 +271,17 @@ width: 100%;
 	width: 100%;
 }
 .vbar{
-position: absolute;
-border: none;
-border-left: 0px solid #ccc;
-1px solid #333;
-width: 16px;
+	position: absolute;
+	border: none;
+	border-left: 0px solid #ccc;
+	1px solid #333;
+	width: 16px;
 }
+#vbar0{
+	border-right: 1px solid #ccc;
+
+}
+
 /*
 .bar:hover{
 	background-color:#fff0f0;
@@ -290,6 +301,9 @@ width: 16px;
 	line-height: 20px;
 	text-align: center;
 	padding-top: 4px;
+}
+.nmoved{
+	background-color: #ff6600;
 }
 .nplayed{
 	background-color: #ffcc66;
