@@ -49,6 +49,10 @@ body {
     padding:0;
     width:100%;
 }
+@font-face {
+	font-family:"Oleo Script";
+	src: url("../fonts/OleoScript-Regular.ttf") /* TTF file for CSS3 browsers */
+}
 
 /* Portrait layout (default) */
 .app {
