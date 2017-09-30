@@ -36,22 +36,12 @@ var noterecord = new Array();
 
 
 $(document).ready(function () {
-    lowLag.init({'debug':'false','urlPrefix':'snd/'    });
-    for(i=0;i<15;i++){
-        lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+i);
+    //lowLag.init({'debug':'false','urlPrefix':'snd/'    });
+    //for(i=0;i<15;i++){
+    //    lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+i);
         //sounds.push(new buzz.sound("./snd/bx_"+i));
-    }
+    //}
 
-    /*
-    if (!buzz.isSupported()) {
-        alert("Your browser is too old, time to update!");
-    }
-    buzz.defaults.formats = [ 'mp3' ];
-    buzz.defaults.preload = 'auto';
-    for(i=0;i<15;i++){
-        sounds.push(new buzz.sound("./snd/bx_"+i));
-      }
- */
 
     $.fn.draggable = function() {
         var offset = null;
@@ -105,8 +95,9 @@ $(document).ready(function () {
         $('body .your-version').bind("mousemove", function (e) {
             //e.preventDefault();
             //$("#cord").html(drag);
+            var blockPosition = $("body .your-version").position();
             blockOffsetX = parseInt($("body .your-version").css('margin-left'));
-            blockOffsetY = parseInt($("body .your-version").css('margin-top'));
+            blockOffsetY = blockPosition.top+parseInt($("body .your-version").css('margin-left'));
             coords[0]=e.pageX-8-blockOffsetX;
             coords[1]=Math.round((e.pageY-8-blockOffsetY)/16)*16;
             if(drag!=""){
@@ -121,8 +112,7 @@ $(document).ready(function () {
                     coords[2]=coords[1];
                 }
 
-                //var msg = "Handler for .mousemove() called at ";
-                //msg += event.pageX + ", " + event.pageY;
+
                 $("#nte"+drag).css({'left':coords[0]+'px'});
                 $("#nte"+drag).css({'top':Math.round(coords[1]/16)*16+'px'});
                 //console.log("<div>" + msg + "</div>");
@@ -142,10 +132,6 @@ $(document).ready(function () {
         // on mobile
     }
 
-    //console.log(notes.length);
-    // make bar from note array
-    // bar extras?
-    // ondrop="drop(event)" ondragover="allowDrop(event)"
     for(i=0;i<Math.round($(window).width()/16);i++){
         //console.log(i);
         $('#barsv').append('<div class="vbar" name="vbar'+i+'" id="vbar'+i+'"></div>');
@@ -160,15 +146,10 @@ $(document).ready(function () {
     $('.controls').css('top',50+(i*16)+'px');
     loadSong(1);
     $('#playhead').css('height',i*16+'px');
-    //console.log("js ready");
-
-    //$('.bar').ontouchstart(tch);
 
     if(document.body.ontouchstart === undefined){
         $(".bar").bind('mousedown',function(e) {
             createNote(e);
-            //$("#cord").html(e.pageX);
-
         });
     }else{
         //
@@ -180,8 +161,6 @@ $(document).ready(function () {
                 pageY: orig.changedTouches[0].pageY - pos.top
             };
             createNote(offset);
-            //$("#cord").html(e.pageX);
-
         });
 
     }
@@ -221,11 +200,7 @@ function loadSong(iSongNr) {
         notelist.push(mid);
         $("body .your-version").append('<div name="nte'+mid+'" id="nte'+mid+'" style="left:'+(crd[0])+'px;top:'+crd[1]*16+'px;" class="noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
         drag="";
-        //sounds[Math.round(coords[1]/32)].play();
 
-        //$("#nte"+mid).draggable();
-        //$('#nte0').click(function(){alert('sf')});
-        //$("#nte"+mid).draggable();
         if(document.body.ontouchstart === undefined){
             // no tablet mode:
             $("#nte"+mid).bind("mousedown", function (e) {
@@ -251,12 +226,11 @@ function loadSong(iSongNr) {
 
         }
     }
-    // showPop("<b>BETA version</b><br><img src='kikkerland.jpg' width='100' style='padding-right:10px;' height='100' align='left'>I've loaded a demo song so you can how this works. You can clear it with the appropriate button.<br>Be aware when printing: don't scale the output. The demo is set for Kikkerland musicboxes.<br>You can view a <a style='color:#ff6600' href='https://www.youtube.com/watch?v=4_u8Zj_3Hq0' target='_blank'>demo on youtube</a><br><br>Have fun - Grit");
 }
 function cleardoos(){
     if(!$('#mclear').hasClass('disabled')){
         $('.noot').remove();
-        notelist=new Array();
+        loadSong(1);
     }
     $('.vbar').remove();
     for(i=0;i<Math.round($(window).width()/16);i++){
@@ -273,9 +247,6 @@ function speeldoos(){
             $('#speel').html("STOP <i class=\"fa fa-stop\"></i>");
             TweenLite.to('#playhead',.3,{x:0,opacity:.4,height:"240px"});
             TweenLite.to('#playhead',$('#songspeed').val(),{x:endPosition,onUpdate:playTime,ease:'linear',onComplete:playDone})
-            //console.log(endPosition);
-            //$('#playhead').css({'display':'block','left':'0px'});
-            //var track=setInterval(function(){playit()},800);
         }
     }else{
         TweenLite.killTweensOf('#playhead');
