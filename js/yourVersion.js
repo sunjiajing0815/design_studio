@@ -103,7 +103,7 @@ $(document).ready(function () {
             var blockPosition = $("body .your-version").position();
             blockOffsetX = parseInt($("body .your-version").css('margin-left'));
             blockOffsetY = blockPosition.top+parseInt($("body .your-version").css('margin-left'));
-            coords[0]=e.pageX-8-blockOffsetX;
+            coords[0]=e.pageX-8-blockPosition.left;
             coords[1]=Math.round((e.pageY-8-blockOffsetY)/16)*16;
             if(drag!=""){
                 if(coords[2]!=coords[1]){
@@ -148,7 +148,7 @@ $(document).ready(function () {
         $('#barsh').append('<div class="bar" name="bar'+i+'" id="bar'+i+'">'+nt+'</div>');
         $('#bar'+i).css({'left':0,'top':i*16+'px'});
     }
-    $('.controls').css('top',50+(i*16)+'px');
+    //$('.controls').css('top',50+(i*16)+'px');
     loadSong(1);
     $('#playhead').css('height',i*16+'px');
 
@@ -246,12 +246,13 @@ function cleardoos(){
 }
 function speeldoos(){
     if($('#speel').html()=="PLAY <i class=\"fa fa-play\"></i>"){
+        var blockPosition = $("body .your-version").position();
         //ttime=0;
         if(!$('#speel').hasClass('disabled')){
-            endPosition = $(window).width()-parseInt($("body .your-version").css("margin-right"))*2;//$(window).width()
+            endPosition = $(window).width()-blockPosition.left*2;//$(window).width()-parseInt($("body .your-version").css("margin-right"))*2;//$(window).width()
             $('#speel').html("STOP <i class=\"fa fa-stop\"></i>");
             TweenLite.to('#playhead',.3,{x:0,opacity:.4,height:"240px"});
-            TweenLite.to('#playhead',$('#songspeed').val(),{x:endPosition,onUpdate:playTime,ease:'linear',onComplete:playDone})
+            TweenLite.to('#playhead',12,{x:endPosition,onUpdate:playTime,ease:'linear',onComplete:playDone})
         }
     }else{
         TweenLite.killTweensOf('#playhead');
@@ -323,7 +324,7 @@ function createNote(e){
     //blockOffsetY = parseInt($("body .your-version").css('margin-top'));
     //console.log(blockOffsetX);
     console.log(createNote);
-    coords[0]=e.pageX-8-blockOffsetX;
+    coords[0]=e.pageX-8-blockPosition.left;
     coords[1]=e.pageY-8-blockOffsetY;
     var mid=notelist.length;
     notelist.push(mid);
