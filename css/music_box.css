@@ -1,0 +1,86 @@
+body{
+    background-color:rgb(045,040,034);
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+.nav{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:40px;
+    width:90%;
+    overflow:hidden;
+
+}
+.nav a{
+    text-decoration:none;
+    font-family: "mrs-eaves-roman-small-caps","Kozuka Gothic Pro M",sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size:18px;
+}
+.nav a:hover{ color:#FFFFFF; text-decoration:underline;}
+.nav ul li{
+    float:left;
+    width:180px;
+    margin-left:100px;
+    list-style:none;
+    position: relative;
+    margin-left:30px;
+    overflow:hidden;
+    text-align:center;
+}
+.nav ul li a{
+    text-align:center;
+    color: white;
+    font-size:20px;
+    display: block;
+    overflow:hidden;
+}
+.Top{
+    margin-top:-40px;
+    float:left;
+    overflow:hidden;
+}
+.music-title{
+    text-align: center;
+    /*font-family: 'Lobster Two', cursive;*/
+    color:#AF9661;
+    text-decoration: underline overline;
+}
+h2{
+    font-family: "brim-narrow-combined-1",sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size:20pt;
+}
+.panel{
+    padding: 10px;
+    margin:2% 8% 8% 8%;
+    background: rgb(249,202,129);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    background: -webkit-radial-gradient(rgb(248,200,128), rgb(255,220,148), rgb(248,200,128)); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(rgb(248,200,128), rgb(255,220,148), rgb(248,200,128)); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(rgb(248,200,128), rgb(255,220,148), rgb(248,200,128)); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(rgb(248,200,128), rgb(255,220,148), rgb(248,200,128)); /* Standard syntax (must be last) */
+
+}
+h3{
+    text-align: left;
+    font-size: 15pt;
+    color: #363129;
+}
+.panel-header{
+    position: relative;
+    overflow: hidden;
+
+
+}
+.panel-header .elm{
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%
+}

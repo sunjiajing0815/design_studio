@@ -30,9 +30,13 @@
 
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round|Lobster+Two" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/game.css" />
+    <link rel="stylesheet" type="text/css" href="css/music_box.css" />
     <link type="text/css" rel="stylesheet" href="./css/font-awesome.css">
     <script src="./js/jquery-1.7.2.min.js"></script>
+    <script src="https://use.typekit.net/mfb8wxn.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
     <!--
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -47,87 +51,119 @@
     <title>MusicBox</title>
 </head>
 <body>
-
-    <div class="origin-version">
-
-        <script src="./js/originVersion.js" type="text/javascript"></script>
-        <!--<script type="text/javascript" src="./js/quo.js"></script>-->
-
-
-        <div id="o_bars">
-            <div id="o_barsv"></div>
-            <div id="o_barsh"></div>
+    <div class= "nav">
+        <div class="nav1">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#musicbox">Music Box</a></li>
+            </ul>
         </div>
-
-        <div id="o_playhead" class="transparent"></div>
-        <div class="controls">
-            <div class="button disabled" id="o_speel">PLAY <i class="fa fa-play"></i></div>
-            <div class="button disabled" id="o_mclear">CLEAR</div>
-            <p>
-            <form target="soundwindow" method="post" action="" id="soundform" name="soundform"> PLAY SPEED: <select id="songspeed" class="select-style">
-                <option value="24" >Slooow</option>
-                <option value="16" >Slow</option>
-                <option value="12" SELECTED>Normal</option>
-                <option value="8" >Fast</option>
-                <option value="6" >Faster</option>
-                <option value="4" >Fastest</option>
-            </select>
-                <select class="select-style" id="o_demosongs" onchange="onOriginDemoChange()">
-                    <option value="2" >Brothers in Arms Patriotic Song</option>
-                    <option value="3" >Wilhelmus van Nassouwe</option>
-                    <option value="4" >The Can-Can</option>
-                    <option value="5" >Wiegenlied brahms</option>
-                    <option value="6" >Tetris</option>
-                    <option value="7" >Happy birthday</option>
-                    <option value="8" >Stille nacht</option>
-                    <option value="9" >Flappie</option>
-                    <option value="10" >Marines' Hymn</option>
-                </select>
-            </form>
-            </p>
+        <img class="Top" src="img/MusicQueensland.png" alt="" title="" width="15%" height="15%">
+        <div class ="nav2">
+            <ul class="nav2">
+                <li ><a href="gallery.html">Gallery</a></li>
+                <li><a href="AboutUs.html">About us</a></li>
+            </ul>
         </div>
-        <div id="o_cord">[trace out]</div>
     </div>
 
-    <div class="your-version">
+    <div class="music-title">
+        <h2>Queensland march song and chorus</h2>
+    </div>
 
-        <script src="./js/yourVersion.js" type="text/javascript"></script>
-        <!--<script type="text/javascript" src="./js/quo.js"></script>-->
-
-
-        <div id="bars">
-            <div id="barsv"></div>
-            <div id="barsh"></div>
+    <div class = "panel">
+        <div class="panel-header">
+            <div class="elm"><h3>Transcribed Version</h3></div>
+            <div class="controls">
+                <div class="button disabled elm" id="o_speel">PLAY <i class="fa fa-play"></i></div>
+                <div class="button disabled elm" id="o_mclear">RESET</div>
+            </div>
         </div>
 
-        <div id="playhead" class="transparent"></div>
-        <div class="controls">
-            <div class="button disabled" id="speel">PLAY <i class="fa fa-play"></i></div>
-            <div class="button disabled" id="mclear">RESET</div>
-            <p>
-            <form target="soundwindow" method="post" action="" id="soundform" name="soundform"> PLAY SPEED: <select id="songspeed" class="select-style">
-                <option value="24" >Slooow</option>
-                <option value="16" >Slow</option>
-                <option value="12" SELECTED>Normal</option>
-                <option value="8" >Fast</option>
-                <option value="6" >Faster</option>
-                <option value="4" >Fastest</option>
-            </select>
-                <select class="select-style" id="demosongs" onchange="onDemoChange()">
-                    <option value="2" >Brothers in Arms Patriotic Song</option>
-                    <option value="3" >Wilhelmus van Nassouwe</option>
-                    <option value="4" >The Can-Can</option>
-                    <option value="5" >Wiegenlied brahms</option>
-                    <option value="6" >Tetris</option>
-                    <option value="7" >Happy birthday</option>
-                    <option value="8" >Stille nacht</option>
-                    <option value="9" >Flappie</option>
-                    <option value="10" >Marines' Hymn</option>
+        <div class="origin-version">
+
+            <script src="./js/originVersion.js" type="text/javascript"></script>
+            <!--<script type="text/javascript" src="./js/quo.js"></script>-->
+
+
+            <div id="o_bars">
+                <div id="o_barsv"></div>
+                <div id="o_barsh"></div>
+            </div>
+
+            <div id="o_playhead" class="transparent"></div>
+
+                <!--<form target="soundwindow" action="" id="soundform" name="soundform"> PLAY SPEED: <select id="songspeed" class="select-style">
+                    <option value="24" >Slooow</option>
+                    <option value="16" >Slow</option>
+                    <option value="12" SELECTED>Normal</option>
+                    <option value="8" >Fast</option>
+                    <option value="6" >Faster</option>
+                    <option value="4" >Fastest</option>
                 </select>
-            </form>
-            </p>
+                    <select class="select-style" id="o_demosongs" onchange="onOriginDemoChange()">
+                        <option value="2" >Brothers in Arms Patriotic Song</option>
+                        <option value="3" >Wilhelmus van Nassouwe</option>
+                        <option value="4" >The Can-Can</option>
+                        <option value="5" >Wiegenlied brahms</option>
+                        <option value="6" >Tetris</option>
+                        <option value="7" >Happy birthday</option>
+                        <option value="8" >Stille nacht</option>
+                        <option value="9" >Flappie</option>
+                        <option value="10" >Marines' Hymn</option>
+                    </select>
+                </form>-->
+            <div id="o_cord">[trace out]</div>
         </div>
-        <div id="cord">[trace out]</div>
+    </div>
+    <div class="panel">
+
+        <div class="panel-header">
+            <div class="elm"><h3>Your Version</h3></div>
+            <div class="controls">
+                <div class="button disabled elm" id="speel">PLAY <i class="fa fa-play"></i></div>
+                <div class="button disabled elm" id="mclear">RESET</div>
+            </div>
+
+        </div>
+
+
+        <div class="your-version">
+
+            <script src="./js/yourVersion.js" type="text/javascript"></script>
+            <!--<script type="text/javascript" src="./js/quo.js"></script>-->
+
+
+            <div id="bars">
+                <div id="barsv"></div>
+                <div id="barsh"></div>
+            </div>
+
+            <div id="playhead" class="transparent"></div>
+
+                <!--<form target="soundwindow" method="post" action="" id="soundform" name="soundform"> PLAY SPEED: <select id="songspeed" class="select-style">
+                    <option value="24" >Slooow</option>
+                    <option value="16" >Slow</option>
+                    <option value="12" SELECTED>Normal</option>
+                    <option value="8" >Fast</option>
+                    <option value="6" >Faster</option>
+                    <option value="4" >Fastest</option>
+                </select>
+                    <select class="select-style" id="demosongs" onchange="onDemoChange()">
+                        <option value="2" >Brothers in Arms Patriotic Song</option>
+                        <option value="3" >Wilhelmus van Nassouwe</option>
+                        <option value="4" >The Can-Can</option>
+                        <option value="5" >Wiegenlied brahms</option>
+                        <option value="6" >Tetris</option>
+                        <option value="7" >Happy birthday</option>
+                        <option value="8" >Stille nacht</option>
+                        <option value="9" >Flappie</option>
+                        <option value="10" >Marines' Hymn</option>
+                    </select>
+                </form>-->
+            <div id="cord">[trace out]</div>
+
+        </div>
     </div>
 
 </body>

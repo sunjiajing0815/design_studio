@@ -55,7 +55,7 @@ $(document).ready(function () {
         $('#o_barsh').append('<div class="o_bar" name="o_bar'+i+'" id="o_bar'+i+'">'+nt+'</div>');
         $('#o_bar'+i).css({'left':0,'top':i*16+'px'});
     }
-    $('.controls').css('top',50+(i*16)+'px');
+    //$('.controls').css('top',50+(i*16)+'px');
     loadOriginSong(1);
     $('#o_playhead').css('height',i*16+'px');
     $('#o_speel').bind('click',o_speeldoos);
@@ -128,11 +128,12 @@ function o_cleardoos(){
 function o_speeldoos(){
     if($('#o_speel').html()=="PLAY <i class=\"fa fa-play\"></i>"){
         //ttime=0;
+        var blockPosition = $("body .origin-version").position();
         if(!$('#o_speel').hasClass('disabled')){
-            endPosition = $(window).width()-parseInt($("body .origin-version").css("margin-right"))*2;//$(window).width()
+            endPosition = $(window).width()-blockPosition.left*2;//$(window).width()-parseInt($("body .origin-version").css("margin-right"))*2
             $('#o_speel').html("STOP <i class=\"fa fa-stop\"></i>");
             TweenLite.to('#o_playhead',.3,{x:0,opacity:.4,height:"240px"});
-            TweenLite.to('#o_playhead',$('#songspeed').val(),{x:endPosition,onUpdate:playOriginTime,ease:'linear',onComplete:o_playDone})
+            TweenLite.to('#o_playhead',12,{x:endPosition,onUpdate:playOriginTime,ease:'linear',onComplete:o_playDone})
         }
     }else{
         TweenLite.killTweensOf('#o_playhead');
