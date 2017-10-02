@@ -198,7 +198,7 @@ function checkGone(mc){
 function onOriginDemoChange(){
     var i = +$("#o_demosongs").val(); // val() returns a string, use + to convert to integer
     $("#songnameid").val($("#o_demosongs option:selected").text());
-    cleardoos();
+    o_cleardoos();
     loadOriginSong(i);
 }
 function showPop(txt){

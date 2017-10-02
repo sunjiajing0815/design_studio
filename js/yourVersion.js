@@ -41,7 +41,12 @@ $(document).ready(function () {
     //    lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+i);
         //sounds.push(new buzz.sound("./snd/bx_"+i));
     //}
+    lowLag.init({'debug':'false','urlPrefix':'snd/'    });
 
+    for(i=0;i<15;i++){
+        lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+i);
+        //sounds.push(new buzz.sound("./snd/bx_"+i));
+    }
 
     $.fn.draggable = function() {
         var offset = null;
@@ -230,7 +235,7 @@ function loadSong(iSongNr) {
 function cleardoos(){
     if(!$('#mclear').hasClass('disabled')){
         $('.noot').remove();
-        loadSong(1);
+        loadSong(1);//reset
     }
     $('.vbar').remove();
     for(i=0;i<Math.round($(window).width()/16);i++){
@@ -311,9 +316,13 @@ function checkGone(mc){
 }
 
 function createNote(e){
+    var blockPosition = $("body .your-version").position();
     blockOffsetX = parseInt($("body .your-version").css('margin-left'));
-    blockOffsetY = parseInt($("body .your-version").css('margin-top'));
+    blockOffsetY = blockPosition.top+parseInt($("body .your-version").css('margin-left'));
+    //blockOffsetX = parseInt($("body .your-version").css('margin-left'));
+    //blockOffsetY = parseInt($("body .your-version").css('margin-top'));
     //console.log(blockOffsetX);
+    console.log(createNote);
     coords[0]=e.pageX-8-blockOffsetX;
     coords[1]=e.pageY-8-blockOffsetY;
     var mid=notelist.length;
