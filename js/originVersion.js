@@ -39,7 +39,7 @@ $(document).ready(function () {
     lowLag.init({'debug':'false','urlPrefix':'snd/'    });
 
     for(i=0;i<15;i++){
-        lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+i);
+        lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+(14-i));
         //sounds.push(new buzz.sound("./snd/bx_"+i));
     }
 
@@ -109,7 +109,7 @@ function loadOriginSong(iSongNr) {
         var mid=notelist.length;
         var crd=sampleSong[i].split(",");
         notelist.push(mid);
-        $("body .origin-version").append('<div name="nte'+mid+'" id="o_nte'+mid+'" style="left:'+(crd[0])+'px;top:'+crd[1]*16+'px;" class="o_noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
+        $("body .origin-version").append('<div name="nte'+mid+'" id="o_nte'+mid+'" style="left:'+(crd[0])+'px;top:'+(14-crd[1])*16+'px;" class="o_noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
 
     }
 }

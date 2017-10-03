@@ -20,8 +20,8 @@
     g    79
     g+  80
     */
-var rnotes=new Array('c','c#','d','d#','e','f','f#','g','g#','a','a#','b');
-var notes=new Array(56,58,60,61,63,65,67,68,70,72,73,75,77,79,80);
+var rnotes=new Array('c','c#','d','d#','e','f','f#','g','g#','a','a#','b');//old("b","a#","a","g#","g","f#","f","e","d#","d","c#","c")
+var notes=new Array(56,58,60,61,63,65,67,68,70,72,73,75,77,79,80);//new(80,79,77,75,73,72,70,68,67,65,63,61,60,58,56)
 var drag="";
 var coords=new Array(0,0,0);
 var notelist=new Array();
@@ -44,7 +44,7 @@ $(document).ready(function () {
     lowLag.init({'debug':'false','urlPrefix':'snd/'    });
 
     for(i=0;i<15;i++){
-        lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+i);
+        lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+14-i);
         //sounds.push(new buzz.sound("./snd/bx_"+i));
     }
 
@@ -203,7 +203,7 @@ function loadSong(iSongNr) {
         var mid=notelist.length;
         var crd=sampleSong[i].split(",");
         notelist.push(mid);
-        $("body .your-version").append('<div name="nte'+mid+'" id="nte'+mid+'" style="left:'+(crd[0])+'px;top:'+crd[1]*16+'px;" class="noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
+        $("body .your-version").append('<div name="nte'+mid+'" id="nte'+mid+'" style="left:'+(crd[0])+'px;top:'+(14-crd[1])*16+'px;" class="noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
         drag="";
 
         if(document.body.ontouchstart === undefined){
