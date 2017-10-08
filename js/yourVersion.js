@@ -42,6 +42,7 @@ $(document).ready(function () {
         //sounds.push(new buzz.sound("./snd/bx_"+i));
     //}
     lowLag.init({'debug':'false','urlPrefix':'snd/'    });
+    $('.music-image').hide();
 
     for(i=0;i<15;i++){
         lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+(14-i));
@@ -93,7 +94,8 @@ $(document).ready(function () {
 
     $('#speel').bind('click',speeldoos);
     $('#mclear').bind('click',cleardoos);
-    $('#mprint').bind('click',printsong);
+    $('#share').bind('click',share);
+    $('#send2us').bind('click',send2us);
     if(document.body.ontouchstart === undefined){
         // desktop
 
@@ -168,7 +170,11 @@ $(document).ready(function () {
             createNote(offset);
         });
 
-    }
+    };
+
+    $('.scroll-handle').click(function(){
+        $('.music-image').slideToggle();
+    });
 });
 function loadSong(iSongNr) {
     var sampleSong;
@@ -260,6 +266,32 @@ function speeldoos(){
         playDone();
     }
 }
+function share(){
+    if($('#speel').html()=="STOP <i class=\"fa fa-stop\"></i>"){
+        alert("Please stop playing to share the music.");
+    }else{
+        var blockPosition = $("body .your-version").position();
+        //ttime=0;
+        if(!$('#speel').hasClass('disabled')){
+            endPosition = $(window).width()-blockPosition.left*2;//$(window).width()-parseInt($("body .your-version").css("margin-right"))*2;//$(window).width()
+            TweenLite.to('#playhead',.3,{x:0,opacity:.4,height:"240px"});
+            TweenLite.to('#playhead',1,{x:endPosition,onUpdate:scanTime,ease:'linear',onComplete:scanDone})
+        }
+    }
+}
+function send2us(){
+    if($('#speel').html()=="STOP <i class=\"fa fa-stop\"></i>"){
+        alert("Please stop playing to share the music.");
+    }else{
+        var blockPosition = $("body .your-version").position();
+        //ttime=0;
+        if(!$('#speel').hasClass('disabled')){
+            endPosition = $(window).width()-blockPosition.left*2;//$(window).width()-parseInt($("body .your-version").css("margin-right"))*2;//$(window).width()
+            TweenLite.to('#playhead',.3,{x:0,opacity:.4,height:"240px"});
+            TweenLite.to('#playhead',1,{x:endPosition,onUpdate:scanTime,ease:'linear',onComplete:scan2sendDone})
+        }
+    }
+}
 function playTime(){
     var head=$('#playhead').position();
     //$('#cord').html(head.left);
@@ -282,15 +314,53 @@ function playTime(){
 
     });
 }
+function scanTime(){
+    var head=$('#playhead').position();
+    //$('#cord').html(head.left);
+    $( ".noot" ).each(function( index ) {
+        if(!$(this).hasClass('nscanned')){
+            var p=$(this).position();
+            //console.log(head.left);
+            if(head.left>p.left){
+                //sounds[Math.round(Math.min((notes.length-1)*16,p.top)/16)].stop();
+                $(this).addClass('nscanned');
+                //$(this).css('background-color','#ffcc66');
+                var note_num = Math.round(Math.min((notes.length-1)*16,p.top)/16);
+                noterecord.push("\""+p.left+ ","+ note_num+"\"");
+            }
+        }
+    });
+}
 function playDone(){
     //ttimer++;
     $('.noot').removeClass('nplayed');
     $('#speel').html("PLAY <i class=\"fa fa-play\"></i>");
-
     TweenLite.to('#playhead',.5,{x:0,opacity:0});
     console.log(noterecord.join());
     noterecord.length = 0;
+}
+function scanDone(){
+    //ttimer++;
+    $('.noot').removeClass('nscanned');
+    TweenLite.to('#playhead',.5,{x:0,opacity:0});
+    console.log(noterecord.join());
 
+    //Insert share method here:
+    console.log("shared!");
+
+    noterecord.length = 0;
+}
+
+function scan2sendDone(){
+    //ttimer++;
+    $('.noot').removeClass('nscanned');
+    TweenLite.to('#playhead',.5,{x:0,opacity:0});
+    console.log(noterecord.join());
+
+    //Insert send method here:
+    console.log("send!");
+
+    noterecord.length = 0;
 }
 function pnot(){
     //ttime++;
