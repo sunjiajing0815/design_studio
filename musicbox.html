@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="css/game.css" />
     <link rel="stylesheet" type="text/css" href="css/music_box.css" />
     <link type="text/css" rel="stylesheet" href="./css/font-awesome.css">
+
     <script src="./js/jquery-1.7.2.min.js"></script>
     <script src="https://use.typekit.net/mfb8wxn.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -47,10 +48,17 @@
     <script src="./js/lowLag.js"></script>
     <script type="text/javascript" src="./js/soundmanager2.js"></script>
 
+    <script>
+        function myFunction() {
+            var x = document.URL;
+            document.getElementById("test").src = 'https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdeco1800-p1f.uqcloud.net%2Fmusicbox.html&layout=button_count&size=large&mobile_iframe=true&appId=164775590768378&width=84&height=28';
+        }
+    </script>
+
     <!--<script src="./js/buzz.js"></script>-->
     <title>MusicBox</title>
 </head>
-<body>
+<body onload="myFunction()">
     <div class= "nav">
         <div class="nav1">
             <ul>
@@ -61,7 +69,7 @@
         <img class="Top" src="img/MusicQueensland.png" alt="" title="" width="15%" height="15%">
         <div class ="nav2">
             <ul class="nav2">
-                <li ><a href="gallery.html">Gallery</a></li>
+                <li ><a href="Gallery.html">Gallery</a></li>
                 <li><a href="AboutUs.html">About us</a></li>
             </ul>
         </div>
@@ -169,8 +177,15 @@
                     </select>
                 </form>-->
             <div id="cord">[trace out]</div>
-
         </div>
+        <div class="share">
+            <iframe
+                    id="test"
+                    width="84" height="28" style="border:none; overflow:hidden"
+                    scrolling="no" frameborder="0" allowTransparency="true">
+            </iframe>
+        </div>
+
     </div>
 
 </body>
