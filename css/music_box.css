@@ -84,3 +84,24 @@ h3{
     margin-left: 1%;
     margin-right: 1%;
 }
+.music-image {
+    width: 80%;
+    padding-bottom: 0px;
+    margin: 0px auto;
+}
+.music-image img {
+    width: 100%;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+.scroll-handle {
+    color: rgb(175, 150, 97);
+    text-align: center;
+    width: 60%;
+    margin: 0px auto;
+}
+.scroll-handle img {
+    margin-top: 0px;
+    width: 100%;
+    padding: 0px;
+}
