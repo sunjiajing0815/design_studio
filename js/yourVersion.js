@@ -43,6 +43,8 @@ $(document).ready(function () {
     //}
     lowLag.init({'debug':'false','urlPrefix':'snd/'    });
     $('.music-image').hide();
+    var mb_no = GetURLParameter('mb_no');
+    var mb_str = GetURLParameter('mb_str');
 
     for(i=0;i<15;i++){
         lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+(14-i));
@@ -473,6 +475,19 @@ function tch(e){
 
     }
 }
+function GetURLParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam)
+        {
+            return sParameterName[1];
+        }
+    }
+}​
 
 /*
 function wer(){
