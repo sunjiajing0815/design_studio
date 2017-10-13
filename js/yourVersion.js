@@ -93,7 +93,7 @@ $(document).ready(function () {
     };
 
     $('#speel').bind('click',speeldoos);
-    $('#mclear').bind('click',cleardoos);
+    $('#mclear').bind('click',resetdoos);
     $('#share').bind('click',share);
     $('#send2us').bind('click',send2us);
     if(document.body.ontouchstart === undefined){
@@ -212,7 +212,8 @@ function loadSong(iSongNr) {
         var mid=notelist.length;
         var crd=sampleSong[i].split(",");
         notelist.push(mid);
-        $("body .your-version").append('<div name="nte'+mid+'" id="nte'+mid+'" style="left:'+(crd[0])+'px;top:'+crd[1]*16+'px;" class="noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
+        var left = crd[0] * windowWidth / 1350;
+        $("body .your-version").append('<div name="nte'+mid+'" id="nte'+mid+'" style="left:'+(left)+'px;top:'+crd[1]*16+'px;" class="noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
         drag="";
 
         if(document.body.ontouchstart === undefined){
@@ -240,11 +241,35 @@ function loadSong(iSongNr) {
 
         }
     }
+    $(window).resize(function() {
+        cleardoos();
+        windowWidth = $(window).width();
+        for(i=0;i<sampleSong.length;i++){
+            var mid=notelist.length;
+            var crd=sampleSong[i].split(",");
+            notelist.push(mid);
+            var left = crd[0] * windowWidth / 1300;
+            $("body .your-version").append('<div name="nte'+mid+'" id="nte'+mid+'" style="left:'+(left)+'px;top:'+crd[1]*16+'px;" class="noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
+
+        }
+
+    });
+}
+function resetdoos(){
+    if(!$('#mclear').hasClass('disabled')){
+        $('.noot').remove();
+        loadSong(1);//reset
+    }
+    $('.vbar').remove();
+    for(i=0;i<Math.round($(window).width()/16);i++){
+        //console.log(i);
+        $('#barsv').append('<div class="vbar" name="vbar'+i+'" id="vbar'+i+'"></div>');
+        $('#vbar'+i).css({'left':i*16+'px','top':'0','height':16*notes.length+'px'});
+    }
 }
 function cleardoos(){
     if(!$('#mclear').hasClass('disabled')){
         $('.noot').remove();
-        loadSong(1);//reset
     }
     $('.vbar').remove();
     for(i=0;i<Math.round($(window).width()/16);i++){

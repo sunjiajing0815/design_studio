@@ -31,12 +31,14 @@ var dragplay=0;
 var removing=false;
 var iv,track,ttime;
 var noterecord = new Array();
-
+var windowWidth = 0;
 
 
 
 $(document).ready(function () {
     lowLag.init({'debug':'false','urlPrefix':'snd/'    });
+    windowWidth=$(window).width();
+    console.log("======>windowWidth:"+windowWidth);
 
     for(i=0;i<15;i++){
         lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+i);
@@ -110,9 +112,22 @@ function loadOriginSong(iSongNr) {
         var mid=notelist.length;
         var crd=sampleSong[i].split(",");
         notelist.push(mid);
-        $("body .origin-version").append('<div name="nte'+mid+'" id="o_nte'+mid+'" style="left:'+(crd[0])+'px;top:'+crd[1]*16+'px;" class="o_noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
+        var left = crd[0] * windowWidth / 1350;
+        $("body .origin-version").append('<div name="nte'+mid+'" id="o_nte'+mid+'" style="left:'+(left)+'px;top:'+crd[1]*16+'px;" class="o_noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
 
     }
+    $(window).resize(function() {
+        o_cleardoos();
+        windowWidth = $(window).width();
+        for(i=0;i<sampleSong.length;i++){
+            var mid=notelist.length;
+            var crd=sampleSong[i].split(",");
+            notelist.push(mid);
+            var left = crd[0] * windowWidth / 1300;
+            $("body .origin-version").append('<div name="nte'+mid+'" id="o_nte'+mid+'" style="left:'+(left)+'px;top:'+crd[1]*16+'px;" class="o_noot"></div>');//'+rnotes[notes[crd[1]]%12]+'
+
+        }
+    });
 }
 function loadMusicImg(iSongNr){
     console.log("./img/mb1"+iSongNr+".jpg");
