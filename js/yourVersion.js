@@ -236,7 +236,7 @@ function loadSong(iSongNr) {
                     clearInterval(iv);
                     $("#nte"+drag).remove();
                 }
-                drag="";
+                x="";
             });
 
         }
@@ -295,6 +295,8 @@ function speeldoos(){
     }
 }
 function share(){
+    //Scan before share it to social media
+
     if($('#speel').html()=="STOP <i class=\"fa fa-stop\"></i>"){
         alert("Please stop playing to share the music.");
     }else{
@@ -308,6 +310,7 @@ function share(){
     }
 }
 function send2us(){
+    //Scan before send it to database
     if($('#speel').html()=="STOP <i class=\"fa fa-stop\"></i>"){
         alert("Please stop playing to share the music.");
     }else{
