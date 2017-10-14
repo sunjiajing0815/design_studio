@@ -386,6 +386,14 @@ function scan2sendDone(){
     console.log(noterecord.join());
 
     //Insert send method here:
+    $.ajax({
+        type: "POST",
+        url: "./php/send2us.php",
+        data: "music_record=" + noterecord.join(),
+        success: function(data) {
+            alert("success");
+        }
+    });
     console.log("send!");
 
     noterecord.length = 0;
