@@ -45,7 +45,7 @@ $(document).ready(function () {
     $('.music-image').hide();
 
     for(i=0;i<15;i++){
-        lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+i);
+        lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+(14-i));
         //sounds.push(new buzz.sound("./snd/bx_"+i));
     }
 
