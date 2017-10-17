@@ -69,10 +69,10 @@
 			
 			<div class="mb" id="box">
 
-
-				<?php 
+				<?php
+                    //'http://data.gov.au/storage/f/2013-05-12T204412/tmp93Y8OaNASLA_music.csv'
 					$file = fopen('./document/tmp93Y8OaNASLA_music.csv','r');
-                    $mblist = array(0=>"",1=>"");
+                    $mblist = array(1=>"Australia unfurl the flag!",2=>"When the jacaranda blooms", 3=>"Soldiers of the willow", 4=>"My little Aussie girl", 5=>"Brothers in arms patriotic song", 6=>"Queensland waltz");
 					while ($data = fgetcsv($file)) { 
 					$goods_list[] = $data;
 					 }
