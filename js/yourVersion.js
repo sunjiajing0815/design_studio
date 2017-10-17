@@ -20,8 +20,30 @@
     g    79
     g+  80
     */
+/*Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+under the License.
+
+    touchmove:
+http://popdevelop.com/2010/08/touching-the-web/
+    Musicbox Template
+http://musicbox.grit.it/
+*/
 var rnotes=new Array('c','c#','d','d#','e','f','f#','g','g#','a','a#','b');//old("b","a#","a","g#","g","f#","f","e","d#","d","c#","c")
-var notes=new Array(56,58,60,61,63,65,67,68,70,72,73,75,77,79,80);//new(80,79,77,75,73,72,70,68,67,65,63,61,60,58,56)
+var notes=new Array(80,79,77,75,73,72,70,68,67,65,63,61,60,58,56);//new(56,58,60,61,63,65,67,68,70,72,73,75,77,79,80)
 var drag="";
 var coords=new Array(0,0,0);
 var notelist=new Array();
@@ -39,19 +61,16 @@ var mb_notes=new Array();
 
 
 $(document).ready(function () {
-    //lowLag.init({'debug':'false','urlPrefix':'snd/'    });
-    //for(i=0;i<15;i++){
-    //    lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+i);
-        //sounds.push(new buzz.sound("./snd/bx_"+i));
-    //}
+
     lowLag.init({'debug':'false','urlPrefix':'snd/'    });
     $('.music-image').hide();
 
+    //load music file
     for(i=0;i<15;i++){
         lowLag.load(['bx_'+i+'.mp3','bx_'+i+'.ogg'],'bx_'+(14-i));
-        //sounds.push(new buzz.sound("./snd/bx_"+i));
     }
 
+    //draggable function from http://popdevelop.com/2010/08/touching-the-web/
     $.fn.draggable = function() {
         var offset = null;
         var start = function(e) {
@@ -95,16 +114,14 @@ $(document).ready(function () {
         this.bind("touchmove", moveMe);
     };
 
+    //link the buttons' click event with functions
     $('#speel').bind('click',speeldoos);
     $('#mclear').bind('click',resetdoos);
     $('#share').bind('click',share);
     $('#send2us').bind('click',send2us);
+    // bind mousemove with function from http://musicbox.grit.it/
     if(document.body.ontouchstart === undefined){
-        // desktop
-
         $('body .your-version').bind("mousemove", function (e) {
-            //e.preventDefault();
-            //$("#cord").html(drag);
             var blockPosition = $("body .your-version").position();
             blockOffsetX = parseInt($("body .your-version").css('margin-left'));
             blockOffsetY = blockPosition.top+parseInt($("body .your-version").css('margin-left'));
@@ -116,9 +133,7 @@ $(document).ready(function () {
                 }
                 if(dragplay==1){
                     dragplay=0;
-                    //console.log(Math.min((notes.length-1)*32,Math.round(coords[1]/32)));
                     lowLag.play('bx_'+Math.round(Math.min((notes.length-1)*16,coords[1])/16));
-                    //sounds[Math.round(Math.min((notes.length-1)*32,coords[1])/32)].play();
                     coords[2]=coords[1];
                 }
 
@@ -141,7 +156,7 @@ $(document).ready(function () {
     }else{
         // on mobile
     }
-
+    //draw staffs from http://musicbox.grit.it/
     for(i=0;i<Math.round($(window).width()/16);i++){
         //console.log(i);
         $('#barsv').append('<div class="vbar" name="vbar'+i+'" id="vbar'+i+'"></div>');
@@ -153,17 +168,24 @@ $(document).ready(function () {
         $('#barsh').append('<div class="bar" name="bar'+i+'" id="bar'+i+'">'+nt+'</div>');
         $('#bar'+i).css({'left':0,'top':i*16+'px'});
     }
-    //$('.controls').css('top',50+(i*16)+'px');
+
+    //retrieve parameters from URL.
+    //mb_no is the music box sequence number
+    //mb_score is the exact record from the user who shared the music box to social media platform
     mb_no = GetURLParameter('mb_no');
-    loadSong(mb_no);
     console.log(mb_no);
-    mb_score = GetURLParameter("mb_score");
+    mb_score = GetURLParameter('mb_score');
     mb_score = decodeURIComponent(mb_score);
-    mb_notes = mb_score.split(";");
+    if (mb_score!=""){
+        mb_notes = mb_score.split(";");
+        console.log(mb_notes);
+    }
+    loadSong(mb_no);
 
-
+    //prepare playhead
     $('#playhead').css('height',i*16+'px');
 
+    //Create note from http://musicbox.grit.it/
     if(document.body.ontouchstart === undefined){
         $(".bar").bind('mousedown',function(e) {
             createNote(e);
@@ -182,14 +204,18 @@ $(document).ready(function () {
 
     };
 
-    $('.scroll-handle').click(function(){
+
+    //scroll-down
+    $('.scroll-handle').mousedown(function(){
         $('.music-image').slideToggle();
     });
 });
 function loadSong(iSongNr) {
+    //load the song: iSongNr the musicbox sequence number
+    //if there is a modified version load the modified version. otherwise load the music according to the sequence number.
     var sampleSong;
     iSongNr = parseInt(iSongNr);
-    if(mb_notes!=""){
+    if(mb_notes.length!=0){
         sampleSong = mb_notes;
     }else {
         switch (iSongNr) {
@@ -220,6 +246,7 @@ function loadSong(iSongNr) {
         $('#mclear').removeClass('disabled');
         $('#mprint').removeClass('disabled');
     }
+    //Draw the notes
     for(i=0;i<sampleSong.length;i++){
         var mid=notelist.length;
         var crd=sampleSong[i].split(",");
@@ -254,6 +281,7 @@ function loadSong(iSongNr) {
         }
     }
     $(window).resize(function() {
+        //redraw the notes when the window is resized.
         cleardoos();
         windowWidth = $(window).width();
         for(i=0;i<sampleSong.length;i++){
@@ -268,6 +296,7 @@ function loadSong(iSongNr) {
     });
 }
 function resetdoos(){
+    //Reset the changed music box score
     if(!$('#mclear').hasClass('disabled')){
         $('.noot').remove();
         mb_score="";
@@ -281,6 +310,7 @@ function resetdoos(){
     }
 }
 function cleardoos(){
+    //clear the notes on the music score
     if(!$('#mclear').hasClass('disabled')){
         $('.noot').remove();
     }
@@ -292,6 +322,7 @@ function cleardoos(){
     }
 }
 function speeldoos(){
+    //animate play the music
     if($('#speel').html()=="PLAY <i class=\"fa fa-play\"></i>"){
         var blockPosition = $("body .your-version").position();
         //ttime=0;
@@ -337,6 +368,7 @@ function send2us(){
     }
 }
 function playTime(){
+    //play each note and change the note's color
     var head=$('#playhead').position();
     //$('#cord').html(head.left);
     $( ".noot" ).each(function( index ) {
@@ -359,6 +391,7 @@ function playTime(){
     });
 }
 function scanTime(){
+    //scan the music staff and transcript the music into an array
     var head=$('#playhead').position();
     //$('#cord').html(head.left);
     $( ".noot" ).each(function( index ) {
@@ -370,12 +403,13 @@ function scanTime(){
                 $(this).addClass('nscanned');
                 //$(this).css('background-color','#ffcc66');
                 var note_num = Math.round(Math.min((notes.length-1)*16,p.top)/16);
-                noterecord.push("'"+parseInt(p.left)+ ","+ note_num+"'");
+                noterecord.push(parseInt(p.left)+ ","+ note_num);
             }
         }
     });
 }
 function playDone(){
+    //clean the scene after play is done.
     //ttimer++;
     $('.noot').removeClass('nplayed');
     $('#speel').html("PLAY <i class=\"fa fa-play\"></i>");
@@ -384,14 +418,16 @@ function playDone(){
     noterecord.length = 0;
 }
 function scanDone(){
+    //compose the sharing URL for different social media
     //ttimer++;
     $('.noot').removeClass('nscanned');
     TweenLite.to('#playhead',.5,{x:0,opacity:0});;
     var ncstring = noterecord.join(";");
     var encodedURI=encodeURIComponent(ncstring);
-    $fbURL = "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdeco1800-p1f.uqcloud.net%2Fmusicbox.html?mb_score="+encodedURI+"&mb_no="+mb_no+"&amp;src=sdkpreparse";
-    $twURL = "https://twitter.com/intent/tweet?url=https://deco1800-p1f.uqcloud.net/musicbox.html?mb_score="+encodedURI+"&mb_no="+mb_no+"&via=twinkleffan&text=Hi, guys! I find an interesting website to recompose classical songs!";
-    $glURL = "https://plus.google.com/share?url=https://deco1800-p1f.uqcloud.net/musicbox.html?mb_score="+encodedURI+"&mb_no="+mb_no;
+    console.log(encodedURI);
+    $fbURL = "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdeco1800-p1f.uqcloud.net%2Fmusicbox.html?mb_score="+encodedURI+"%26mb_no="+mb_no+"&amp;src=sdkpreparse";
+    $twURL = "https://twitter.com/intent/tweet?url=https://deco1800-p1f.uqcloud.net/musicbox.html?mb_score="+encodedURI+"%26mb_no="+mb_no+"&via=twinkleffan&text=Hi, guys! I find an interesting website to recompose classical songs!";
+    $glURL = "https://plus.google.com/share?url=https://deco1800-p1f.uqcloud.net/musicbox.html?mb_score="+encodedURI+"%26mb_no="+mb_no;
     //Insert share method here:
     if($("#box").attr("data-opened")=="no"){
         $("#box").show();
@@ -409,6 +445,7 @@ function scanDone(){
 }
 
 function scan2sendDone(){
+    //send the scanned result to the database.
     //ttimer++;
     $('.noot').removeClass('nscanned');
     TweenLite.to('#playhead',.5,{x:0,opacity:0});
@@ -420,7 +457,7 @@ function scan2sendDone(){
         url: "./php/send2us.php",
         data: "music_record=" + noterecord.join(),
         success: function(data) {
-            alert("success");
+            alert("Thank you!");
         }
     });
     console.log("send!");
@@ -439,6 +476,7 @@ function pnot(){
     });
 }
 function checkGone(mc){
+    //Mark displaced notes code from: http://musicbox.grit.it/
     var ypos=$(mc).css('top').replace("px","")*1;
     //$("#cord").html("y:"+ypos);
     if(ypos>(notes.length-1)*16){
@@ -452,6 +490,9 @@ function checkGone(mc){
 }
 
 function createNote(e){
+    //Create new note from:http://musicbox.grit.it/
+
+
     var blockPosition = $("body .your-version").position();
     blockOffsetX = parseInt($("body .your-version").css('margin-left'));
     blockOffsetY = blockPosition.top+parseInt($("body .your-version").css('margin-left'));
@@ -502,41 +543,12 @@ function createNote(e){
 
     }
 }
-function printsong(){
-    $('.formnotes').remove();
-    $( ".noot" ).each(function( index ) {
-        var p=$(this).position();
-        $('#soundform').append('<input name="fnote['+index+']" type="hidden" class="formnotes" value="'+p.left+','+Math.round(p.top/16)+'">');
-        //sounds[Math.round(Math.min((notes.length-1)*32,p.top)/32)].stop();
-    });
-    $('#soundform').submit();
-}
+
 function onDemoChange(){
     var i = +$("#demosongs").val(); // val() returns a string, use + to convert to integer
     $("#songnameid").val($("#demosongs option:selected").text());
     cleardoos();
     loadSong(i);
-}
-function showPop(txt){
-    $('#popcontent p').html(txt);
-    TweenLite.to($('.popinModal'), .3, {opacity:1});
-}
-function hidePop(){
-    TweenLite.to( $('.popinModal'), .3, {opacity:0,onComplete:function(){
-        lowLag.play('bx_0');
-        $('.popinModal').css("visibility", "hidden");
-    }});
-}
-function tch(e){
-    $("#cord").html(e.pageX);
-    switch (e.type) {
-        case 'touchstart': this.onTouchStart(event); break;
-        case 'touchmove': this.onTouchMove(event); break;
-        case 'touchend': this.onClick(event); break;
-        case 'click': this.onClick(event); break;
-        default:$("#cord").html(e.type);
-
-    }
 }
 function GetURLParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
@@ -545,52 +557,11 @@ function GetURLParameter(sParam) {
         var sParameterName = sURLVariables[i].split('=');
         if (sParameterName[0] == sParam) {
             return sParameterName[1];
-        }else{
-            return "";
         }
     }
+    return "";
 }
-/*
-function wer(){
-    $(".bar").on('touchend',function(e){
-        console.log("add");
-      //coords[0]=e.pageX;
-      //coords[1]=e.pageY;
-        var mid=notelist.length;
-        notelist.push(mid);
-        $("body").append('<div id="nte'+mid+'" style="left:'+(coords[0]-8)+'px;top:'+Math.round((coords[1]-8)/16)*16+'px;" class="noot"></div>');
-        drag="";
-        $('#nte'+mid).on('touchstart',function(e){
-            $("#cord").html(e.pageX);
 
-             //var tl1 = new TimelineLite();
-             //my_media.play();
-             drag=this;
-             $(this).style('background-color', 'red');
-             //LowLatencyAudio.play('background');
-             //TweenLite.to($(this), 0, {scaleX:.97, scaleY:.97});
-         });
-
-    });
-*/
-/*
- $("body").on('touchend',function(){
-      drag="";
-     $('.noot').style('background-color', '#ff6600');
-//var tl1 = new TimelineLite();
-                //TweenLite.to($(this), .1, {delay:.1,scaleX:1, scaleY:1});
-});
-*/
-/*
-$('.noot').tap(function() {
-    // affects "span" children/grandchildren
-    console.log(this);
-    $(this).style('background-color', 'red');
-});
-*/
-//};
-
-//document.body.addEventListener('touchmove', function(e){e.preventDefault()}, false);
 
 
 
