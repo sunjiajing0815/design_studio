@@ -33,16 +33,3 @@ window.fbAsyncInit = function() {
         fjs.parentNode.insertBefore(js,fjs);
     }
 }(document, 'script', 'twitter-wjs');
-
-//function toggleShare(box){
-  //  var box = document.getElementById(box);
-
-    //if(box.dataset.opened =="no"){
-      //  document.getElementById("box").style.display='block';
-        //box.dataset.opened ="yes";
-    //}else{
-    //    document.getElementById("box").style.display='none';
-    //    box.dataset.opened ="no";
-    //}
-
-//}

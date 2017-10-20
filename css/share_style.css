@@ -13,7 +13,7 @@ body,html{
     z-index:5;
 }
 
-#box {
+#sharebox {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     background: -webkit-radial-gradient(rgb(248,200,128), rgb(255,220,148), rgb(248,200,128)); /* Safari 5.1 to 6.0 */

@@ -5,11 +5,14 @@
     <meta charset="utf-8" />
     <title>Gallery</title>
     <link rel="stylesheet" type="text/css" href="./css/gallery.css" />
+    <link type="text/css" rel="stylesheet" href="./css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="./css/share_style.css">
+
     <script src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/Gallary.js?v=001"></script>
     <script src="https://use.typekit.net/mfb8wxn.js"></script>
-    <link type="text/css" rel="stylesheet" href="./css/font-awesome.css">
-
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript" src="js/share.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 </head>
@@ -124,7 +127,7 @@
     <div class="box">
         <div class="container-1">
             <form id="filter" class="">
-                <span class="icon"><i class="fa fa-search"></i></span>
+                <span class="searchicon"><i class="fa fa-search"></i></span>
                 <input id="filter-text" name="text" type="text" placeholder="Filter by title" method="get" value="<?php echo $filter; ?>">
 
             </form>
@@ -152,6 +155,57 @@
 
 
 
+</div>
+<!--share pop up-->
+<div id="sharebox" data-opened="no">
+    <div class="share-title">
+        <h3>Share to Social Media</h3>
+    </div>
+    <div class="wrapper fb-share">
+        <div
+                data-href="https://deco1800-p1f.uqcloud.net/gallery_v1.php"
+                data-layout="button" data-size="large">
+            <a class="fb-xfbml-parse-ignore" target="_blank"
+               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdeco1800-p1f.uqcloud.net%2Fgallery_v1.php&amp;
+                        src=sdkpreparse">
+                <div class="icon" id="facebook">
+                    f
+                </div>
+            </a>
+        </div>
+        <div class="share-name">
+            <h4>Facebook</h4>
+        </div>
+    </div>
+
+    <div class="wrapper tw-share">
+        <a href="https://twitter.com/intent/tweet?url=https://deco1800-p1f.uqcloud.net/gallery_v1.php&via=twinkleffan&text=Hi, guys! I find an interesting website to recompose classical songs!">
+            <div class="icon" id="twitter">
+                t
+            </div>
+        </a>
+        <div class="share-name">
+            <h4>Twitter</h4>
+        </div>
+    </div>
+
+    <div class="wrapper gl-share">
+        <!-- <div data-action="share" data-href="https://deco1800-p1f.uqcloud.net/musicbox.html">g</div> -->
+        <a href="https://plus.google.com/share?url=https://deco1800-p1f.uqcloud.net/gallery_v1.php"
+           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+            <div class="icon" id="google">
+                G
+            </div>
+        </a>
+        <div class="share-name">
+            <h4>Google Plus</h4>
+        </div>
+    </div>
+</div>
+<!--End pop up-->
+<div class="background">
+    <div class="layer">
+    </div>
 </div>
 </body>
 

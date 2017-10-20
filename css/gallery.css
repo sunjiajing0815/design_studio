@@ -237,7 +237,7 @@ img:hover{
 .container-1 input#filter-text:-ms-input-placeholder {
 	color: rgb(166,143,094);
 }
-.container-1 .icon{
+.container-1 .searchicon{
 	position: absolute;
 	top: 30%;
 	margin-left: 6px;
