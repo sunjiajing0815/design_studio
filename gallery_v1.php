@@ -19,14 +19,19 @@
 
 <body>
 <?php
+
+    //Load data from csv. Filter the data
     $mblist = array(1=>"Australia unfurl the flag!",2=>"When the jacaranda blooms", 3=>"Soldiers of the willow", 4=>"My little Aussie girl", 5=>"Brothers in arms patriotic song", 6=>"Queensland waltz");
     $cache_filename = 'cache/slq-cache.json';
 
-    if(file_exists($cache_filename)) { // Cache file exists
+    //check cache
+    if(file_exists($cache_filename)) {
+        // Cache file exists
         $data = file_get_contents($cache_filename);
         $data = json_decode($data);
     }
-    else { // Cache file doesn't exist, let's create one
+    else {
+        // Cache file doesn't exist, let's create one
         $file = fopen('./document/tmp93Y8OaNASLA_music.csv','r');
         while ($rawdata = fgetcsv($file)) {
             $data[] = $rawdata;
@@ -35,11 +40,13 @@
         fclose($file);
     }
 
+    //Get filter test from the front end
     $filter = '';
     if(isset($_GET['text']) && $_GET['text'] != '') {
         $filter = $_GET['text'];
     }
 
+    //Process data in a loop. save the data into two lists imagelist and detaillist
     if(is_array($data)) {
         $imagelist='';
         $detaillist='';
@@ -68,7 +75,7 @@
                     }
                     if($validRecord){
                         //echo '<p><img src='.$img.'><p/>';
-                        $imagelist .= "<li data-num='$i'><img class='MB$i' src='$img' alt='' width='200' height='260'></li>";
+                        $imagelist .= "<li data-num='$i' title='$tit'><img class='MB$i' src='$img' alt='' width='200' height='260'></li>";
                         if(array_search($tit,$mblist)===false){
                             $detaillist .= "<div class='item mb$i'>"."<div class=Detail>".'<div class ="Cover" >'.
                                 "<img class='first' src='$img' alt='' title='' >".
@@ -77,7 +84,7 @@
                                 "<div class='title'><p>$tit</p></div>".
                                 '<img class="share" src="img/share.png" alt="" title=""" width="40" height="40">'.
                                 "<ul><li>Create by $create</li><li>Subject:$subject</li></ul>".
-                                "<div class='word'><p>$des</p>".
+                                "<div class='word'><p>$des</p><p>Sorry, the music box game for this music is not ready yet. Please try another one.</p>".
                                 '</div></div>'.
                                 '<div class="btns"><div class="back-btn"><img class="back" src="img/back.png" alt="" title="" width="120" height="50"></div></div>'.
                                 '</div></div></div>';
@@ -90,7 +97,7 @@
                                 "<div class='title'><p>$tit</p></div>".
                                 '<img class="share" src="img/share.png" alt="" title=""" width="40" height="40">'.
                                 "<ul><li>Create by $create</li><li>Subject:$subject</li></ul>".
-                                "<div class='word'><p>$des</p>".
+                                "<div class='word'><p>$des</p><p>Come on have a try of our new music box game for this music, help us correct the error and send us your version of the music!</p>".
                                 '</div></div>'.
                                 '<div class="btns"><div class="back-btn"><img class="back" src="img/back.png" alt="" title="" width="120" height="50"></div>'.
                                 "<a href='musicbox.html?mb_no=$mbno'>".'<img class="play" src="img/play.png" alt="" title="" width="120" height="50"></a></div>'.
@@ -107,7 +114,7 @@
 
 ?>
 <div class="gallary">
-
+    <!-- Navigation header -->
     <div class= "nav">
         <div class="nav1">
             <ul>
@@ -123,7 +130,7 @@
             </ul>
         </div>
     </div>
-
+    <!-- Search Bar modified based on https://webdesign.tutsplus.com/tutorials/css-experiments-with-a-search-form-input-and-button--cms-22069 -->
     <div class="box">
         <div class="container-1">
             <form id="filter" class="">
@@ -136,6 +143,7 @@
         <p id="filter-count"><strong><?php echo $count; ?></strong> records displayed.</p>
     </div>
 
+    <!--music cover-->
     <div class="MusicBoxList">
         <ul id="imgs">
             <?php

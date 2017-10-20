@@ -64,9 +64,9 @@ $(document).ready(function () {
     $('.background').hide();
 
     $('.background').click(function(){
-        $("#box").hide();
+        $("#sharebox").hide();
         $(".background").hide();
-        $("#box").attr("data-opened","no");
+        $("#sharebox").attr("data-opened","no");
     });
 
     //load music file
@@ -426,25 +426,25 @@ function scanDone(){
     //compose the sharing URL for different social media
     //ttimer++;
     $('.noot').removeClass('nscanned');
-    TweenLite.to('#playhead',.5,{x:0,opacity:0});;
+    TweenLite.to('#playhead',.5,{x:0,opacity:0});
     var ncstring = noterecord.join(";");
     var encodedURI=encodeURIComponent(ncstring);
     console.log(encodedURI);
     $fbURL = "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdeco1800-p1f.uqcloud.net%2Fmusicbox.html?mb_score="+encodedURI+"%26mb_no="+mb_no+"&amp;src=sdkpreparse";
     $twURL = "https://twitter.com/intent/tweet?url=https://deco1800-p1f.uqcloud.net/musicbox.html?mb_score="+encodedURI+"%26mb_no="+mb_no+"&via=twinkleffan&text=Hi, guys! I find an interesting website to recompose classical songs!";
     $glURL = "https://plus.google.com/share?url=https://deco1800-p1f.uqcloud.net/musicbox.html?mb_score="+encodedURI+"%26mb_no="+mb_no;
-    //Insert share method here:
-    if($("#box").attr("data-opened")=="no"){
-        $("#box").show();
+    //Display popup for sharing options.
+    if($("#sharebox").attr("data-opened")=="no"){
+        $("#sharebox").show();
         $(".layer").height($(document).height()+$(".background").height());
         $(".background").show();
-        $("#box").attr("data-opened","yes");
+        $("#sharebox").attr("data-opened","yes");
         $(".fb-share a").attr("href",$fbURL);
         $(".tw-share a").attr("href",$twURL);
         $(".gl-share a").attr("href",$glURL);
     }else{
-        $("#box").hide();
-        $("#box").attr("data-opened","no");
+        $("#sharebox").hide();
+        $("#sharebox").attr("data-opened","no");
     }
 
 
