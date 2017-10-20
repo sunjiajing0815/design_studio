@@ -3,16 +3,31 @@ body,html{
     padding:0;
 }
 
+.layer {
+    background-color: rgba(107, 80, 53,0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index:5;
+}
 
 #box {
-    background: pink;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    background: -webkit-radial-gradient(rgb(248,200,128), rgb(255,220,148), rgb(248,200,128)); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(rgb(248,200,128), rgb(255,220,148), rgb(248,200,128)); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(rgb(248,200,128), rgb(255,220,148), rgb(248,200,128)); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(rgb(248,200,128), rgb(255,220,148), rgb(248,200,128)); /* Standard syntax (must be last) */
+
     margin:auto;
     position: absolute;
     left: 0;
     right: 0;
     top: 670px;
     width: 400px;
-    height: 100px;
+    height: 200px;
     border-radius: 3px;
     display: none;
     z-index: 10;
@@ -29,7 +44,7 @@ body,html{
     position: absolute;
     width: 45px;
     height: 45px;
-    top: 0; left: 0; bottom: 0; right: 0;
+    top: 0; left: 0; bottom: 100px; right: 0;
     margin:auto;
     color: #212121;
     background: #fff;
@@ -41,6 +56,7 @@ body,html{
     font-family: Arial;
     cursor: pointer;
     transition:1s;
+    overflow: hidden;
 }
 
 .icon:hover{
@@ -66,7 +82,21 @@ a{
     background: #dd4b39;
     box-shadow: inset 0 0 0 22px #dd4b39;
 }
-
+.share-title{
+    margin: auto;
+    weight: 50%;
+    text-align: center;
+}
+.share-title h3{
+    text-align: center;
+}
+.share-name{
+    margin-top:80px;
+    weight:33.3%;
+}
+.share-name h4{
+    text-align: center;
+}
 
 
 

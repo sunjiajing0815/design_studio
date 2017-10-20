@@ -57,13 +57,17 @@ var mb_no="";
 var mb_score="";
 var mb_notes=new Array();
 
-
-
-
 $(document).ready(function () {
 
-    lowLag.init({'debug':'false','urlPrefix':'snd/'    });
+    lowLag.init({'debug':'false','urlPrefix':'snd/'});
     $('.music-image').hide();
+    $('.background').hide();
+
+    $('.background').click(function(){
+        $("#box").hide();
+        $(".background").hide();
+        $("#box").attr("data-opened","no");
+    });
 
     //load music file
     for(i=0;i<15;i++){
@@ -345,6 +349,7 @@ function share(){
         alert("Please stop playing to share the music.");
     }else{
         var blockPosition = $("body .your-version").position();
+
         //ttime=0;
         if(!$('#speel').hasClass('disabled')){
             endPosition = $(window).width()-blockPosition.left*2;//$(window).width()-parseInt($("body .your-version").css("margin-right"))*2;//$(window).width()
@@ -431,6 +436,8 @@ function scanDone(){
     //Insert share method here:
     if($("#box").attr("data-opened")=="no"){
         $("#box").show();
+        $(".layer").height($(document).height()+$(".background").height());
+        $(".background").show();
         $("#box").attr("data-opened","yes");
         $(".fb-share a").attr("href",$fbURL);
         $(".tw-share a").attr("href",$twURL);
