@@ -1,18 +1,68 @@
 @charset "utf-8";
-*{margin:0 auto;}
-.body{width:100%; height:1000px; background:url(../img/background.png) no-repeat center; background-size:100% 100%}
 
-.nav ul{width:100%; height:68px; list-style:none; margin:auto}
-.nav li{float:right; display:block; padding:0 55px; margin-top:50px;}
-.nav .li1{ margin-right: 330px;}
-.nav a{ text-decoration:none; color:#FFFFFF; font-weight:normal; font-family:"mrs-eaves-roman-small-caps";
-    font-size:20px;}
+body{
+    margin: 0;
+    padding: 0;
+    background: rgb(045,040,034);
+}
+.home-cover{
+    position:absolute;
+    height:100vh;
+    width:100%;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background:url(../img/background.png) no-repeat center;
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nav{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:40px;
+    width:90%;
+    overflow:hidden;
+
+}
+.nav a{
+    text-decoration:none;
+    font-family: "mrs-eaves-roman-small-caps","Kozuka Gothic Pro M",sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size:18px;
+}
 .nav a:hover{ color:#FFFFFF; text-decoration:underline;}
+.nav ul li{
+    float:left;
+    width:180px;
+    margin-left:100px;
+    list-style:none;
+    position: relative;
+    margin-left:30px;
+    overflow:hidden;
+    text-align:center;
+}
+.nav ul li a{
+    text-align:center;
+    color: white;
+    font-size:20px;
+    display: block;
+    overflow:hidden;
+}
+.Top{
+    margin-top:-20px;
+    float:left;
+    overflow:hidden;
+}
 
 .mb {
 	width:100%;
-	height:auto;
-    overflow: hidden;	
+    overflow: hidden;
+    margin-top:100vh;
 }
 
 .mb2 {
@@ -20,25 +70,30 @@
 	height: auto;
 	background-color: rgb(045,040,034);
 	position:relative;
-    margin-top: 260px;
     padding-top: 160px;
+
 }
 
 .text p{
     font-family: "brim-narrow-combined-1",sans-serif;
     font-size: 90px;
+    text-align: center;
     color: #FFF;
 }
 .text {
-    padding-left: 33%;
+    margin: auto;
+    width: 50%;
     padding-top: 17%;
+}
+.jump_arrow{
+    margin:auto;
+    width:5%;
 }
 
 .jump_arrow img {
     display: inline-block;
     width: 40px;
-    padding-left: 48%;
-    padding-top: 20%;
+    text-align: center;
     animation: myfirst 2s infinite;
     cursor: pointer;
 }
@@ -105,4 +160,13 @@
 .arrow .next:hover {
     color: #00a0e9;
     opacity: .7;
+}
+.mb h2{
+    width:50%;
+    margin:auto;
+    margin-top: 40px;
+    text-align: center;
+    font-family: "mrs-eaves-roman-small-caps","Kozuka Gothic Pro M",sans-serif;
+    font-size:50px;
+    color:#AF9661;
 }

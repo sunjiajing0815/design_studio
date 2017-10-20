@@ -57,10 +57,18 @@ $(function () {
 
 /*scrolling effect*/
 $(document).ready(function(){
-    $(".mb").hide();
+    //$(".mb").hide();
     $(".jump_arrow img").click(function(){
-        $(".mb").slideToggle();
-        var offset = 260;
+        //$(".mb").slideToggle();
+        var offset = 0;
+        console.log(offset);
+        $('html, body').animate({
+            scrollTop: $(".mb").offset().top+offset},1500);
+    });
+    $(".nav1 li:last-of-type").click(function(){
+        //$(".mb").slideToggle();
+        var offset = 0;
+        console.log(offset);
         $('html, body').animate({
             scrollTop: $(".mb").offset().top+offset},1500);
     });
