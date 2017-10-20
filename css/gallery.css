@@ -1,0 +1,262 @@
+/* gallery*/
+body{
+	background-color:rgb(045,040,034);
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+.nav{
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:40px;
+	width:90%;
+	overflow:hidden;
+
+}
+.nav a{
+	text-decoration:none;
+	font-family: "mrs-eaves-roman-small-caps","Kozuka Gothic Pro M",sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size:18px;
+}
+.nav a:hover{ color:#FFFFFF; text-decoration:underline;}
+.nav ul li{
+	float:left;
+	width:180px;
+	margin-left:100px;
+	list-style:none;
+	position: relative;
+	margin-left:30px;
+	overflow:hidden;
+	text-align:center;
+}
+.nav ul li a{
+	text-align:center;
+	color: white;
+	font-size:20px;
+	display: block;
+	overflow:hidden;
+}
+.Top{
+	margin-top:-16px;
+	float:left;
+	overflow:hidden;
+}
+.nav ul li a{
+	text-align:center;
+	color: white;
+	font-size:20px;
+	display: block; 
+	overflow:hidden;
+}	
+.MusicBox{
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	color: white;
+	font-size:20px;
+}
+.MusicBoxList{
+
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:40px;
+	height:95%;
+	overflow:hidden;
+}
+
+.MusicBoxList ul li{
+	cursor: pointer;
+	float:left;
+	list-style:none;
+	width:20%;
+	overflow:hidden;
+	margin-left:30px;
+	margin-bottom:40px;
+	text-align:center;
+}
+
+ 
+/* detailed*/
+
+
+.Detail{
+	margin-left:auto;
+	margin-right:auto;
+	width:80%;
+	margin-top:40px;
+	height:95%;
+	overflow:hidden;
+}
+
+.Cover{
+	float:left;
+	width:32%;
+	z-index: 10;
+
+}
+.Cover img{
+	box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+}
+.info-box{
+	float:right;
+	width:60%;
+	height:380px;
+	margin-top:80px;
+	font-size:25px;
+}
+.Info{
+	background-color:rgb(056,049,38);
+	font-family:Axure Handwriting ;
+	color:rgb(166,143,094);
+	margin-top: 40px;
+	margin-bottom: 10px;
+	min-height: 30vh;
+
+}
+.content{
+	z-index:10;
+	overflow: hidden;
+}
+.title{
+	width: 80%;
+
+	font-family: "mrs-eaves-roman-small-caps","Kozuka Gothic Pro M",sans-serif;
+	font-size: 30px;
+	float:left;
+}
+.share{
+	margin-top:20px;
+	margin-left:40px;
+}
+.first{
+	width:90%;
+}
+.back{
+	margin-top:50px;
+	margin-left:20px;
+	float:left;
+}
+.play{
+	float:right;
+	margin-top:50px;
+}
+.Info ul{
+	padding-left: 0;
+	clear: both;
+
+}
+.Info ul li{
+	list-style:none;
+	color:rgb(215,206,182);
+	background:rgb(120,105,075);
+	text-decoration:none;
+	font-size:15px;
+	padding: 8px;
+	-webkit-clip-path: polygon(90% 0, 84% 50%, 90% 100%, 0 99%, 0% 50%, 0 0);
+	clip-path: polygon(90% 0, 84% 50%, 90% 100%, 0 99%, 0% 50%, 0 0);
+	width:auto;
+
+	margin-top: 10px;
+}
+.title p{
+	margin-bottom: 0.5em;
+}
+.word{
+	margin-top:20px;
+	margin-left:10px;
+	font-size:15px;
+	color:rgb(175,169,152);
+}
+
+/* AboutUs*/
+
+.AboutUs{	
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	min-width: 100%;
+	min-height: 100%;
+	background-color:rgb(045,040,034);
+	background-size:cover;
+}
+img{
+	border-radius: 5px;
+}
+img:hover{
+	opacity: 0.8;
+}
+#box .item{
+	display: none;
+}
+.btns{
+	clear:both;
+}
+
+.container-1{
+	width: 150px;
+	vertical-align: middle;
+	white-space: nowrap;
+	position: relative;
+}
+.container-1 input#filter-text{
+	width: 150px;
+	height: 20px;
+	background: rgb(056,049,38);
+	border: none;
+	font-size: 10pt;
+	float: left;
+	color: #262626;
+	padding-left: 45px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+
+	-webkit-transition: background .55s ease;
+	-moz-transition: background .55s ease;
+	-ms-transition: background .55s ease;
+	-o-transition: background .55s ease;
+	transition: background .55s ease;
+}
+.container-1 input#filter-text::-webkit-input-placeholder {
+	color: rgb(166,143,094);
+}
+
+.container-1 input#filter-text:-moz-placeholder { /* Firefox 18- */
+	color: rgb(166,143,094);
+}
+
+.container-1 input#filter-text::-moz-placeholder {  /* Firefox 19+ */
+	color: rgb(166,143,094);
+}
+
+.container-1 input#filter-text:-ms-input-placeholder {
+	color: rgb(166,143,094);
+}
+.container-1 .icon{
+	position: absolute;
+	top: 30%;
+	margin-left: 6px;
+	margin-top: 2px;
+	z-index: 1;
+	color: rgb(166,143,094);
+}
+.container-1 input#filter-text:hover, .container-1 input#filter-text:focus, .container-1 input#filter-text:active{
+	outline:none;
+	background: #ffffff;
+}
+.box{
+	position: absolute;
+	right: 150px;
+	display: block;
+
+}
+.box p{
+	color:rgb(166,143,094);
+	text-align: right;
+
+}

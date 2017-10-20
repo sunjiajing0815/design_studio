@@ -4,9 +4,13 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Gallery</title>
-		<link rel="stylesheet" type="text/css" href="css/gallary.css?v=004" />
+		<link rel="stylesheet" type="text/css" href="./css/gallery.css" />
 		<script src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/Gallary.js?v=001"></script>
+		<script type="text/javascript" src="js/Gallary.js"></script>
+        <script src="https://use.typekit.net/mfb8wxn.js"></script>
+        <link type="text/css" rel="stylesheet" href="./css/font-awesome.css">
+
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
 	
 	</head>
 	
@@ -54,14 +58,7 @@
 					 
 					 fclose($file);
 				?>
-					<!-- <li><img class="MB1" src="img/mb1.jpg" alt="" title="" width="200" height="260"></li>
-					<li><img class="MB2" src="img/mb2.jpg" alt="" title="" width="200" height="260"></li>
-					<li><img class="MB3" src="img/mb3.jpg" alt="" title="" width="200" height="260"></li>
-					<li><img class="MB4" src="img/mb4.jpg" alt="" title="" width="200" height="260"></li>
-					<li><img class="MB5" src="img/mb5.jpg" alt="" title="" width="200" height="260"></li>
-					<li><img class="MB6" src="img/mb6.jpg" alt="" title="" width="200" height="260"></li>
-					<li><img class="MB7" src="img/mb6.jpg" alt="" title="" width="200" height="260"></li>
-					<li><img class="MB8" src="img/mb6.jpg" alt="" title="" width="200" height="260"></li> -->
+
 				</ul>
 				
 			</div>
@@ -93,28 +90,30 @@
 					        	//echo '<p><img src='.$img.'><p/>';
 
 								if(array_search($tit,$mblist)===false){
-								    $str = "<div class='item mb$i'>"."<div class=Ditail>".'<div class ="Cover" >'.
+								    $str = "<div class='item mb$i'>"."<div class=Detail>".'<div class ="Cover" >'.
                                         "<img class='first' src='$img' alt='' title='' >".
-                                        '</div>'.'<div class="Infro">'.
-                                        "<div class='T'><p>$tit</p></div>".
+                                        '</div>'.'<div class="Info">'.
+                                        '<div class="content">'.
+                                        "<div class='title'><p>$tit</p></div>".
                                         '<img class="share" src="img/share.png" alt="" title=""" width="40" height="40">'.
                                         "<ul><li>Create by $create</li><li>Subject:$subject</li></ul>".
                                         "<div class='word'><p>$des</p>".
-                                        '</div>'.
-                                        '<a href="Gallery.php"><img class="back" src="img/back.png" alt="" title="" width="120" height="50"></a>'.
+                                        '</div></div>'.
+                                        '<div class="btns"><a href="Gallery.php"><img class="back" src="img/back.png" alt="" title="" width="120" height="50"></a></div>'.
                                         '</div></div></div>';
                                 }else{
 								    $mbno = array_search($tit,$mblist);
-                                    $str = "<div class='item mb$i'>"."<div class=Ditail>".'<div class ="Cover" >'.
+                                    $str = "<div class='item mb$i'>"."<div class=Detail>".'<div class ="Cover" >'.
                                         "<img class='first' src='$img' alt='' title='' >".
-                                        '</div>'.'<div class="Infro">'.
-                                        "<div class='T'><p>$tit</p></div>".
+                                        '</div>'.'<div class="Info">'.
+                                        '<div class="content">'.
+                                        "<div class='title'><p>$tit</p></div>".
                                         '<img class="share" src="img/share.png" alt="" title=""" width="40" height="40">'.
                                         "<ul><li>Create by $create</li><li>Subject:$subject</li></ul>".
                                         "<div class='word'><p>$des</p>".
-                                        '</div>'.
-                                        '<a href="Gallery.php"><img class="back" src="img/back.png" alt="" title="" width="120" height="50"></a>'.
-                                        "<a href='musicbox.html?mb_no=$mbno'>".'<img class="play" src="img/play.png" alt="" title="" width="120" height="50"></a>'.
+                                        '</div></div>'.
+                                        '<div class="btns"><a href="Gallery.php"><img class="back" src="img/back.png" alt="" title="" width="120" height="50"></a>'.
+                                        "<a href='musicbox.html?mb_no=$mbno'>".'<img class="play" src="img/play.png" alt="" title="" width="120" height="50"></a></div>'.
                                         '</div></div></div>';
                                 }
                                 echo $str;
