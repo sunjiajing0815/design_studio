@@ -15,6 +15,18 @@
     <script type="text/javascript" src="js/share.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@twinkleffan" />
+
+    <meta property="og:type" content="music.song" />
+    <meta property="og:url" content="https://deco1800-p1f.uqcloud.net/gallery_v1.php" />
+    <meta property="og:title" content="Music Box" />
+    <meta property="og:description" content="Hi, guys! I find an interesting website to recompose classical songs!" />
+    <meta property="og:image" content="https://deco1800-p1f.uqcloud.net/huijiefan/img_song.jpg" />
+    <meta property="fb:app_id" content="164775590768378" />
+
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round|Lobster+Two" rel="stylesheet">
+
 </head>
 
 <body>
