@@ -14,8 +14,6 @@ $(document).ready(function(){
         $(this).parentsUntil(".item").hide();
         $(".MusicBoxList").show();
         $(".box").show();
-
-
 	});
 
     $(".share").click(function(){
