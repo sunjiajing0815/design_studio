@@ -84,7 +84,6 @@ a{
 }
 .share-title{
     margin: auto;
-    weight: 50%;
     text-align: center;
 }
 .share-title h3{
@@ -92,7 +91,6 @@ a{
 }
 .share-name{
     margin-top:80px;
-    weight:33.3%;
 }
 .share-name h4{
     text-align: center;
