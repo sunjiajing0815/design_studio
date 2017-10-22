@@ -221,7 +221,7 @@ function loadSong(iSongNr) {
     //if there is a modified version load the modified version. otherwise load the music according to the sequence number.
     var sampleSong;
     iSongNr = parseInt(iSongNr);
-    $(".music-title h2").html(mb_title[iSongNr]);
+    $(".music-title h2").html(mb_title[iSongNr-1]);
 
     if(mb_notes.length!=0){
         sampleSong = mb_notes;
