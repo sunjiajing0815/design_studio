@@ -63,11 +63,15 @@ $(document).ready(function () {
 
     lowLag.init({'debug':'false','urlPrefix':'snd/'});
     $('.music-image').hide();
-    $('.background').hide();
+
+    //$('.background').hide();
+    $('.layer').height($(document).height());
+    $('.layer').width($(document).width());
 
     $('.background').click(function(){
         $("#sharebox").hide();
         $(".background").hide();
+        $(".welcome").hide();
         $("#sharebox").attr("data-opened","no");
     });
 

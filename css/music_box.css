@@ -111,3 +111,15 @@ h3{
 .scroll-handle h4 {
     margin: 0px;
 }
+.welcome{
+    margin:auto;
+    position: absolute;
+    top: 20vh;
+    left: 60vh;
+
+    z-index: 10;
+}
+.welcome img{
+    width: 380px;
+    height: 460px;
+}
