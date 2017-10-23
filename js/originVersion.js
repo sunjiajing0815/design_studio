@@ -49,7 +49,7 @@ $(document).ready(function () {
 
 
     //Loading the bars for original version from http://musicbox.grit.it/
-    for(i=0;i<Math.round($(window).width()/16);i++){
+    for(i=0;i<Math.round($(window).width()*0.8/16);i++){
         //load the vertical
         $('#o_barsv').append('<div class="o_vbar" name="o_vbar'+i+'" id="o_vbar'+i+'"></div>');
         $('#o_vbar'+i).css({'left':i*16+'px','top':'0','height':16*notes.length+'px'});
@@ -148,7 +148,7 @@ function o_cleardoos(){
         notelist=new Array();
     }
     $('.o_vbar').remove();
-    for(i=0;i<Math.round($(window).width()/16);i++){
+    for(i=0;i<Math.round($(window).width()*0.8/16);i++){
         //console.log(i);
         $('#o_barsv').append('<div class="o_vbar" name="o_vbar'+i+'" id="o_vbar'+i+'"></div>');
         $('#o_vbar'+i).css({'left':i*16+'px','top':'0','height':16*notes.length+'px'});

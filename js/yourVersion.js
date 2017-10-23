@@ -64,10 +64,25 @@ $(document).ready(function () {
     lowLag.init({'debug':'false','urlPrefix':'snd/'});
     $('.music-image').hide();
 
-    //$('.background').hide();
+    $('.background').hide();
+    $('.welcome').hide();
     $('.layer').height($(document).height());
     $('.layer').width($(document).width());
 
+    //Find cookies
+    var visit=GetCookie("COOKIE1");
+
+    if (visit==null){
+        //only show the welcome page to new users
+        $('.background').show();
+        $('.welcome').show();
+    }
+    //Add a new cookie for the user
+    var expire=new Date();
+    expire=new Date(expire.getTime()+7776000000);
+    document.cookie="COOKIE1=here; expires="+expire;
+
+    //hide the sharing box
     $('.background').click(function(){
         $("#sharebox").hide();
         $(".background").hide();
@@ -167,7 +182,7 @@ $(document).ready(function () {
         // on mobile
     }
     //draw staffs from http://musicbox.grit.it/
-    for(i=0;i<Math.round($(window).width()/16);i++){
+    for(i=0;i<Math.round($(window).width()*0.8/16);i++){
         //console.log(i);
         $('#barsv').append('<div class="vbar" name="vbar'+i+'" id="vbar'+i+'"></div>');
         $('#vbar'+i).css({'left':i*16+'px','top':'0','height':16*notes.length+'px'});
@@ -316,7 +331,7 @@ function resetdoos(){
         loadSong(mb_no);//reset
     }
     $('.vbar').remove();
-    for(i=0;i<Math.round($(window).width()/16);i++){
+    for(i=0;i<Math.round($(window).width()*0.8/16);i++){
         //console.log(i);
         $('#barsv').append('<div class="vbar" name="vbar'+i+'" id="vbar'+i+'"></div>');
         $('#vbar'+i).css({'left':i*16+'px','top':'0','height':16*notes.length+'px'});
@@ -328,7 +343,7 @@ function cleardoos(){
         $('.noot').remove();
     }
     $('.vbar').remove();
-    for(i=0;i<Math.round($(window).width()/16);i++){
+    for(i=0;i<Math.round($(window).width()*0.8/16);i++){
         //console.log(i);
         $('#barsv').append('<div class="vbar" name="vbar'+i+'" id="vbar'+i+'"></div>');
         $('#vbar'+i).css({'left':i*16+'px','top':'0','height':16*notes.length+'px'});
@@ -581,5 +596,20 @@ function GetURLParameter(sParam) {
 }
 
 
+function GetCookie(name) {
+    var arg=name+"=";
+    var alen=arg.length;
+    var clen=document.cookie.length;
+    var i=0;
 
+    while (i<clen) {
+        var j=i+alen;
+        if (document.cookie.substring(i,j)==arg)
+            return "here";
+        i=document.cookie.indexOf(" ",i)+1;
+        if (i==0)
+            break;
+    }
 
+    return null;
+}

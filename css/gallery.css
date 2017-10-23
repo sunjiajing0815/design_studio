@@ -46,6 +46,8 @@ body{
 	margin-top:-16px;
 	float:left;
 	overflow:hidden;
+	margin-left:auto;
+	margin-right:auto;
 }
 .nav ul li a{
 	text-align:center;

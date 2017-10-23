@@ -11,9 +11,10 @@ $(document).ready(function(){
 	});
 	$(".back-btn").click(function(){
         console.log("back");
-        $(this).parentsUntil(".item").hide();
+        //$(this).parentsUntil(".item").hide();
+        $(".box").hide();
         $(".MusicBoxList").show();
-        $(".box").show();
+
 	});
 
     $(".share").click(function(){
