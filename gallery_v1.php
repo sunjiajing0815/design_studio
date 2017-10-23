@@ -126,22 +126,18 @@
 
 ?>
 <div class="gallary">
-    <!-- Navigation header -->
+    <!--Start of the Navigation bar-->
     <div class= "nav">
-        <div class="nav1">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#musicbox">Music Box</a></li>
-            </ul>
-        </div>
-        <img class="Top" src="img/MusicQueensland.png" alt="" title="" width="15%" height="15%">
-        <div class ="nav2">
-            <ul class="nav2">
-                <li ><a href="#" class="active">Gallery</a></li>
-                <li><a href="about.html">About us</a></li>
-            </ul>
-        </div>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#">Music Box</a></li>
+            <li><img src="img/MusicQueensland.png" alt="" title="" width="15%"></li>
+            <li><a href="gallery_v1.php">Gallery</a></li>
+            <li><a href="about.html">About us</a></li>
+        </ul>
     </div>
+    <!--End of the Navigation bar-->
+
     <!-- Search Bar modified based on https://webdesign.tutsplus.com/tutorials/css-experiments-with-a-search-form-input-and-button--cms-22069 -->
     <div class="box">
         <div class="container-1">
