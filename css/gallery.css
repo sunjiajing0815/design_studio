@@ -39,6 +39,9 @@ body{
 	display: block;
 	overflow:hidden;
 }
+.nav ul li a.active{
+	color:#AF9661;
+}
 .Top{
 	margin-top:-16px;
 	float:left;
