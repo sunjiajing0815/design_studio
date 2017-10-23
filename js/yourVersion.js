@@ -39,7 +39,7 @@ under the License.
 
     touchmove:
 http://popdevelop.com/2010/08/touching-the-web/
-    Musicbox Template
+    Music box modified based on:
 http://musicbox.grit.it/
 */
 var rnotes=new Array('c','c#','d','d#','e','f','f#','g','g#','a','a#','b');//old("b","a#","a","g#","g","f#","f","e","d#","d","c#","c")
@@ -194,7 +194,7 @@ $(document).ready(function () {
     //Create note from http://musicbox.grit.it/
     if(document.body.ontouchstart === undefined){
         $(".bar").bind('mousedown',function(e) {
-            createNote(e);
+            createNote(e,1);
         });
     }else{
         //
@@ -205,7 +205,7 @@ $(document).ready(function () {
                 pageX: orig.changedTouches[0].pageX - pos.left,
                 pageY: orig.changedTouches[0].pageY - pos.top
             };
-            createNote(offset);
+            createNote(offset,1);
         });
 
     };
@@ -214,6 +214,7 @@ $(document).ready(function () {
     //scroll-down
     $('.scroll-handle').mousedown(function(){
         $('.music-image').slideToggle();
+        $('.panel').first().slideToggle();
     });
 });
 function loadSong(iSongNr) {
@@ -500,7 +501,7 @@ function checkGone(mc){
     }
 }
 
-function createNote(e){
+function createNote(e, flag){
     //Create new note from:http://musicbox.grit.it/
 
 
@@ -510,7 +511,6 @@ function createNote(e){
     //blockOffsetX = parseInt($("body .your-version").css('margin-left'));
     //blockOffsetY = parseInt($("body .your-version").css('margin-top'));
     //console.log(blockOffsetX);
-    console.log(createNote);
     coords[0]=e.pageX-8-blockPosition.left;
     coords[1]=e.pageY-8-blockOffsetY;
     var mid=notelist.length;
@@ -522,6 +522,9 @@ function createNote(e){
     }
     $("body .your-version").append('<div name="nte'+mid+'" id="nte'+mid+'" style="left:'+(coords[0])+'px;top:'+Math.round(coords[1]/16)*16+'px;" class="noot"></div>');
     drag="";
+    if(flag==1){
+        $("#nte"+mid).addClass("nmoved");
+    }
     lowLag.play('bx_'+Math.round(coords[1]/16));
     //sounds[Math.round(coords[1]/32)].play();
     //$("#nte"+mid).html( rnotes[notes[Math.round(coords[1]/32)]%12] );

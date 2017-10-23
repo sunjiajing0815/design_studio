@@ -137,7 +137,7 @@
         <img class="Top" src="img/MusicQueensland.png" alt="" title="" width="15%" height="15%">
         <div class ="nav2">
             <ul class="nav2">
-                <li ><a href="Gallery.php">Gallery</a></li>
+                <li ><a href="#" class="active">Gallery</a></li>
                 <li><a href="about.html">About us</a></li>
             </ul>
         </div>

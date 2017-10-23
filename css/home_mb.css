@@ -53,6 +53,9 @@ body{
     display: block;
     overflow:hidden;
 }
+.nav ul li a.active{
+    color:#AF9661;
+}
 .Top{
     margin-top:-20px;
     float:left;
