@@ -1,10 +1,10 @@
 @charset "utf-8";
-
 body{
     margin: 0;
     padding: 0;
     background: rgb(045,040,034);
 }
+
 .home-cover{
     position:absolute;
     height:100vh;
