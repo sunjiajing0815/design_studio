@@ -65,7 +65,7 @@ $(document).ready(function(){
         $('html, body').animate({
             scrollTop: $(".mb").offset().top+offset},1500);
     });
-    $(".nav1 li:last-of-type").click(function(){
+    $(".nav li:nth-of-type(2)").click(function(){
         //$(".mb").slideToggle();
         var offset = 0;
         console.log(offset);

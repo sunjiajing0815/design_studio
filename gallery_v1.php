@@ -130,7 +130,7 @@
     <div class= "nav">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="musicbox.html">Music Box</a></li>
+            <li><a href="index.html#musicbox">Music Box</a></li>
             <li><img src="img/MusicQueensland.png" alt="" title="" width="15%"></li>
             <li><a href="gallery_v1.php" class="active">Gallery</a></li>
             <li><a href="about.html">About us</a></li>
