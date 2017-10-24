@@ -253,13 +253,13 @@ img:hover{
 	outline:none;
 	background: #ffffff;
 }
-.box{
+.searchbox{
 	position: absolute;
 	right: 150px;
 	display: block;
 
 }
-.box p{
+.searchbox p{
 	color:rgb(166,143,094);
 	text-align: right;
 

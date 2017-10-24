@@ -5,17 +5,17 @@ $(document).ready(function(){
 	var imgs = $('#imgs').find('li');
 	imgs.click(function() {
 		$(".MusicBoxList").hide();
-		$(".box").hide();
+		$(".searchbox").hide();
 		var num = $(this).data('num');
+        $("#box").show();
 		$('.mb'+ num +'').show().siblings().hide();
 	});
 	$(".back-btn").click(function(){
         console.log("back");
-        //$(this).parentsUntil(".item").hide();
-        $(".box").hide();
         $(".MusicBoxList").show();
-
-	});
+        $("#box").hide();
+        $(".searchbox").show();
+    });
 
     $(".share").click(function(){
         $("#sharebox").css("top","50vh").show();

@@ -74,9 +74,9 @@
                     $create = $arr[2];
                     $subject = $arr[3];
                     $des = $arr[4];
-                    $tit = str_replace("'","",$tit);
+                    $tit = str_replace("'","", $tit);
                     if($filter) {
-                        if(strpos($tit, $filter) !== FALSE && file_exists($img) !== false) {
+                        if(strpos($tit, $filter) !== FALSE && $tit!=="The Queensland childrens song arranged in four parts for unaccompanied singing.") {
                             $validRecord = true;
                         }
                         else {
@@ -140,7 +140,7 @@
     <!--End of the Navigation bar-->
 
     <!-- Search Bar modified based on https://webdesign.tutsplus.com/tutorials/css-experiments-with-a-search-form-input-and-button--cms-22069 -->
-    <div class="box">
+    <div class="searchbox">
         <div class="container-1">
             <form id="filter" class="">
                 <span class="searchicon"><i class="fa fa-search"></i></span>
