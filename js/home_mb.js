@@ -73,3 +73,15 @@ $(document).ready(function(){
             scrollTop: $(".mb").offset().top+offset},1500);
     });
 });
+
+myAudio = document.getElementById('audio');
+function playPause(){
+    if(myAudio.paused){
+        myAudio.play();
+        document.getElementById('audio_text').innerHTML="Sound Off";
+    }else{
+        myAudio.pause();
+        document.getElementById('audio_text').innerHTML="Sound On";
+
+    }
+}

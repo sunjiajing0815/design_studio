@@ -176,3 +176,15 @@ body{
     font-size:50px;
     color:#AF9661;
 }
+.btn_click{
+    color: #AF9661;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Oleo Script', cursive;
+    font-weight: bold;
+    margin-left: 100vh;
+}
+.btn_click:hover{
+    color:#fff;
+    cursor:pointer;
+}
