@@ -74,8 +74,9 @@
                     $create = $arr[2];
                     $subject = $arr[3];
                     $des = $arr[4];
+                    $tit = str_replace("'","",$tit);
                     if($filter) {
-                        if(strpos($tit, $filter) !== FALSE) {
+                        if(strpos($tit, $filter) !== FALSE && file_exists($img) !== false) {
                             $validRecord = true;
                         }
                         else {
@@ -87,14 +88,14 @@
                     }
                     if($validRecord){
                         //echo '<p><img src='.$img.'><p/>';
-                        $imagelist .= "<li data-num='$i' title='$tit'><img class='MB$i' src='$img' alt='' width='200' height='260'></li>";
+                        $imagelist .= "<li data-num='$i' title='$tit'><img class='MB$i' src='$img' alt='$tit' width='200' height='260'></li>";
                         if(array_search($tit,$mblist)===false){
                             $detaillist .= "<div class='item mb$i'>"."<div class=Detail>".'<div class ="Cover" >'.
                                 "<img class='first' src='$img' alt='' title='' >".
                                 '</div>'.'<div class="Info">'.
                                 '<div class="content">'.
                                 "<div class='title'><p>$tit</p></div>".
-                                '<img class="share" src="img/share.png" alt="" title=""" width="40" height="40">'.
+                                '<img class="share" src="img/share.png" alt="" title="" width="40" height="40">'.
                                 "<ul><li>Create by $create</li><li>Subject:$subject</li></ul>".
                                 "<div class='word'><p>$des</p><p>Sorry, the music box game for this music is not ready yet. Please try another one.</p>".
                                 '</div></div>'.
@@ -107,7 +108,7 @@
                                 '</div>'.'<div class="Info">'.
                                 '<div class="content">'.
                                 "<div class='title'><p>$tit</p></div>".
-                                '<img class="share" src="img/share.png" alt="" title=""" width="40" height="40">'.
+                                '<img class="share" src="img/share.png" alt="" title="" width="40" height="40">'.
                                 "<ul><li>Create by $create</li><li>Subject:$subject</li></ul>".
                                 "<div class='word'><p>$des</p><p>Come on have a try of our new music box game for this music, help us correct the error and send us your version of the music!</p>".
                                 '</div></div>'.
@@ -131,7 +132,7 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#musicbox">Music Box</a></li>
-            <li><img src="img/MusicQueensland.png" alt="" title="" width="15%"></li>
+            <li><a href="index.html"><img src="img/MusicQueensland.png" alt="" title="" width="15%"/></a></li>
             <li><a href="gallery_v1.php" class="active">Gallery</a></li>
             <li><a href="about.html">About us</a></li>
         </ul>
